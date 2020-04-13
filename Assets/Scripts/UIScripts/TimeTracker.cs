@@ -66,4 +66,10 @@ public class TimeTracker : MonoBehaviour
         }
     }//end update
 
+    public string GetHours()
+    {
+        return hoursDisplay;
+
+    }//end getHours
+
 }

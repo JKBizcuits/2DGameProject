@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactible
+  - Market Item
   layers:
   - Default
   - TransparentFX
@@ -42,9 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer
-    uniqueID: 1738746777
-    locked: 0
   - name: Ground
     uniqueID: 844278427
     locked: 0
@@ -62,6 +60,9 @@ TagManager:
     locked: 0
   - name: Buildings
     uniqueID: 924837165
+    locked: 0
+  - name: Market Items
+    uniqueID: 1738746777
     locked: 0
   - name: NPCs
     uniqueID: 1196717531
