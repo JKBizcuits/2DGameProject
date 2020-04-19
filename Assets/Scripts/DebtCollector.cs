@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class debtCollector : MonoBehaviour
 {
-    private GameObject Player = GameObject.Find("Character");
+    private GameObject Player;
     private Vector2 movement;
     public float speed;
     public float distance;
@@ -15,12 +15,15 @@ public class debtCollector : MonoBehaviour
     //triggers
     private bool rentCollected;
     private bool rentChase;
+    private GameObject renter;
 
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.Find("Character");
         rentCollected = false;
         rentChase = false;
+        renter = GameObject.Find("renter");
     }
 
     // Update is called once per frame
@@ -42,7 +45,7 @@ public class debtCollector : MonoBehaviour
         {
 
 
-            if (GameObject.Find("Renter").GetComponent<Renter>().lateDue > 0 && rentCollected == true)
+            if (renter.GetComponent<Renter>().lateDue > 0 && rentCollected == true)
             {
                 rentChase = true;
             }
@@ -59,7 +62,7 @@ public class debtCollector : MonoBehaviour
             if (rentChase == true)
             {
                 rentChase = false;
-                script.hp -= rentDamage();
+                script.TakeDamage(rentDamage());
                 rentCollected = true;
 
             }
@@ -68,7 +71,7 @@ public class debtCollector : MonoBehaviour
 
     private int rentDamage()
     {
-        int damage = (int)System.Math.Ceiling((double)GameObject.Find("Renter").GetComponent<Renter>().lateDue * (.5));
+        int damage = (int)System.Math.Ceiling((double)renter.GetComponent<Renter>().lateDue * (.5));
 
         return damage;
     }

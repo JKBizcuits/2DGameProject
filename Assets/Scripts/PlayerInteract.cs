@@ -1,24 +1,28 @@
-﻿/*using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    
     GameObject currentInterObj = null;
+    public string playerStatus = "pleb";
+    public string currentJob = null;
+    public bool jobDone = false;
     private void Update()
     {
-        if (Input.GetButtonDown("Interact") && currentInterObj)
-        {
-          
-        }
+        if (GameObject.Find("Time").GetComponent<TimeTracker>().curfew == true)
+            jobDone = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         string[] item = new string[2];
+        int[] job = new int[2];
 
         if (collision.CompareTag("Interactible"))
         {
+            
             currentInterObj = collision.gameObject;
 
             if (currentInterObj.name == "BreadStall")
@@ -91,8 +95,83 @@ public class PlayerInteract : MonoBehaviour
                 currentInterObj.SendMessage("DoSellInteraction", item);
             }
         }
+
+        if (jobDone == false)
+        {
+            if (collision.CompareTag("Level0Job"))
+            {
+                if (playerStatus == "pleb")
+                {
+                    if (currentInterObj.name == "JobFarmRight" || currentInterObj.name == "JobFarmLeft")
+                    {
+                        job[0] = 6;
+                        job[1] = 10;
+                        currentInterObj.SendMessage("DoJobInteraction", "job");
+                    }
+                }
+            }
+
+            if (collision.CompareTag("Level1Job"))
+            {
+                if (playerStatus == "townfolk")
+                {
+                    if (currentInterObj.name == "JobBlacksmith")
+                    {
+                        job[0] = 7;
+                        job[1] = 10;
+                        currentInterObj.SendMessage("DoJobInteraction", "job");
+                    }
+
+                    if (currentInterObj.name == "JobTailor")
+                    {
+                        job[0] = 9;
+                        job[1] = 7;
+                        currentInterObj.SendMessage("DoJobInteraction", "job");
+                    }
+                }
+            }
+
+            if (collision.CompareTag("Level2Job"))
+            {
+                if (playerStatus == "fancylad")
+                {
+                    if (currentInterObj.name == "JobMerchent")
+                    {
+                        job[0] = 10;
+                        job[1] = 9;
+                        currentInterObj.SendMessage("DoJobInteraction", "job");
+                    }
+
+                    if (currentInterObj.name == "JobTrader")
+                    {
+                        job[0] = 11;
+                        job[1] = 8;
+                        currentInterObj.SendMessage("DoJobInteraction", "job");
+                    }
+                }
+            }
+        }
+
+        if (collision.CompareTag("Level0House"))
+        {
+            if (playerStatus == "pleb")
+                currentInterObj.SendMessage("DoSleepInteraction");
+        }
+
+        if (collision.CompareTag("Level1House"))
+        {
+            if (playerStatus == "townfolk")
+                currentInterObj.SendMessage("DoSleepInteraction");
+        }
+
+        if (collision.CompareTag("Level0House"))
+        {
+            if (playerStatus == "fancylad")
+                currentInterObj.SendMessage("DoSleepInteraction");
+        }
     }
 
+        
     void OnTriggerExit2D(Collider other)
     {
         if (other.CompareTag("Interactible"))
@@ -106,4 +185,4 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 }
-    */
+    

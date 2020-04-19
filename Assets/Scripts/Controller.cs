@@ -19,9 +19,7 @@ public class Controller : MonoBehaviour
     //Any variables that do not have a value will be assigned
     //a textbox under the script in unity where you can edit the value.
     public float speed;
-    private float totalSeconds;
-    private float hours;
-    private float totalHours;
+    
 
     //Health values
 
@@ -30,7 +28,7 @@ public class Controller : MonoBehaviour
     public int currentHealth;
     public HealthBarScript healthBar;
 
-    public int maxFood = 50;
+    public int maxFood = 100;
     public int currentFood;
     public FoodBarScript foodBar;
 
@@ -39,7 +37,11 @@ public class Controller : MonoBehaviour
     private Animator animator;
 
     public int gold;
-   
+    public int tier;
+    public int criminalRating;
+
+    public TimeTracker time;
+    public string previousHours;
 
 
 
@@ -54,6 +56,9 @@ public class Controller : MonoBehaviour
 
         currentFood = maxFood;
         foodBar.SetMaxFood(maxFood);
+
+        time = GameObject.Find("Clock").AddComponent<TimeTracker>();
+        previousHours = time.GetHours();
 
     }//end Start
 
@@ -125,13 +130,12 @@ public class Controller : MonoBehaviour
             TakeDamage(2);
         }
 
-        totalSeconds = Time.fixedTime;
+        
 
-        hours = totalSeconds / 60;
-
-        if(hours == 5 || hours == 10 || hours == 15 || hours == 20)
+        if(previousHours != time.GetHours() )
         {
-            GetHungrier(5);
+            GetHungrier(2);
+            previousHours = time.GetHours();
         }
 
 

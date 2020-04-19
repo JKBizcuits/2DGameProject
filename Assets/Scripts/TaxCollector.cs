@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class TaxCollector : MonoBehaviour
 {
 
     private int lumpSum;
@@ -12,11 +12,14 @@ public class NewBehaviourScript : MonoBehaviour
     public int gracePeriod;
     public int gracePeriodRenewal;
     public int tier;
+    private GameObject clock;
+    private GameObject guard;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        clock = GameObject.Find("Clock");
+        guard = GameObject.Find("Guard");
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             gracePeriodRenewal = 2;
         }
-        if (((int)GameObject.Find("Clock").GetComponent<TimeTracker>().days % 7) == 0)
+        if (((int)clock.GetComponent<TimeTracker>().days % 7) == 0)
         {
             if(lateDue == 0)
             {
@@ -46,16 +49,16 @@ public class NewBehaviourScript : MonoBehaviour
 
         }
 
-        if (((int)GameObject.Find("Clock").GetComponent<TimeTracker>().days % 7) == gracePeriod)
+        if (((int)clock.GetComponent<TimeTracker>().days % 7) == gracePeriod)
         {
             gracePeriod = 0;
             if(gracePeriod == 0)
             {
-                GameObject.Find("Guard").GetComponent<Guard>().gracePeriod = false;
+                guard.GetComponent<Guard>().gracePeriod = false;
             }
             else
             {
-                GameObject.Find("Guard").GetComponent<Guard>().gracePeriod = true;
+                guard.GetComponent<Guard>().gracePeriod = true;
             }
         }
        

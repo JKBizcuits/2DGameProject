@@ -54,7 +54,7 @@ public class TimeTracker : MonoBehaviour
             hoursDisplay = $"{(int)hours % 24}";
         }
 
-        displayText.text = $"Day {(int) days % 24} Time {hoursDisplay}:{minutesDisplay}";
+        displayText.text = $"Day {(int) days} Time {hoursDisplay}:{minutesDisplay}";
 
         if (hoursDisplay == "22")
         {

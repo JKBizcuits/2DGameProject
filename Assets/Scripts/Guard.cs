@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Guard : MonoBehaviour
 {
-    private GameObject Player = GameObject.Find("Character");
+    private GameObject Player;
+    
     private Vector2 movement;
     public float speed;
     public float distance;
@@ -22,32 +23,153 @@ public class Guard : MonoBehaviour
     private bool taxChase;
     private bool criminalChase;
     private bool curfew;
-        
+    private GameObject taxCollector;
+    private GameObject clock;
+    private bool activePatrol;
+    public Transform[] moveSpots;
+    private int randomSpot;
+    private int lastSpot;
+    private float waitTime;
+    public float startWaitTime;
+    private Animator animator;
+    private float deltaX;
+    private float deltaY;
+    private float absDeltaX;
+    private float absDeltaY;
+
+    TimeTracker timeTracker;
+    TaxCollector taxCollectorScript;
+
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+        waitTime = startWaitTime;
+        randomSpot = 0;
+        lastSpot = moveSpots.Length -1;
+        animator.SetFloat("Speed", speed);
+        Player = GameObject.Find("Character");
         curfew = false;
         checkPlayer = false;
         taxCollected = false;
         failedSteal = false;
         taxChase = false;
         criminalChase = false;
+        activePatrol = true;
+        
+        taxCollector = GameObject.Find("TaxCollector");
+        clock = GameObject.Find("Clock");
+        timeTracker = clock.AddComponent<TimeTracker>();
+        taxCollectorScript = taxCollector.GetComponent<TaxCollector>();
     }
 
     // Update is called once per frame
     void Update()           
     {
+        if (activePatrol == true)
+        {
+            
+
+            //movement = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
+            //transform.position = movement;
+
+            if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f)
+            {
+                if (waitTime <= 0)
+                {
+
+                    lastSpot = randomSpot;
+                    randomSpot += 1;
+                    if (randomSpot == moveSpots.Length)
+                    {
+                        randomSpot = 0;
+                    }
+                    waitTime = startWaitTime;
+                    animator.SetFloat("Speed", speed);
+
+
+                }
+                else
+                {
+                    waitTime -= Time.deltaTime;
+                    animator.SetFloat("Speed", 0);
+
+
+
+                }
+            }
+
+
+
+
+
+
+            
+            deltaX = moveSpots[randomSpot].position.x - transform.position.x;
+            deltaY = moveSpots[randomSpot].position.y - transform.position.y;
+            
+            /*
+            deltaX = moveSpots[randomSpot].position.x - moveSpots[lastSpot].position.x;
+            deltaY = moveSpots[randomSpot].position.y - moveSpots[lastSpot].position.y;
+
+
+            if (deltaX > 0 && deltaY == 0)
+            {
+                animator.SetFloat("IdleHorizontal", 1);
+                animator.SetFloat("IdleVertical", 0);
+                animator.SetFloat("Horizontal", 1);
+                animator.SetFloat("Vertical", 0);
+            }
+            else if (deltaX < 0 && deltaY == 0)
+            {
+
+                animator.SetFloat("IdleHorizontal", -1);
+                animator.SetFloat("IdleVertical", 0);
+                animator.SetFloat("Horizontal", -1);
+                animator.SetFloat("Vertical", 0);
+            }
+            else if (deltaX == 0 && deltaY > 0)
+            {
+                animator.SetFloat("IdleHorizontal", 0);
+                animator.SetFloat("IdleVertical", 1);
+                animator.SetFloat("Horizontal", 0);
+                animator.SetFloat("Vertical", 1);
+            }
+            else if (deltaX == 0 && deltaY < 0)
+            {
+                animator.SetFloat("IdleHorizontal", 0);
+                animator.SetFloat("IdleVertical", -1);
+                animator.SetFloat("Horizontal", 0);
+                animator.SetFloat("Vertical", -1);
+            }
+            else if (deltaX == 0 && deltaY == 0)
+            {
+                animator.SetFloat("Horizontal", 0);
+                animator.SetFloat("Vertical", 0);
+            }
+            */
+
+        }
+    
+
         criminalRating = Player.GetComponent<Controller>().criminalRating;
         if (taxChase == true || criminalChase == true)
         {
             transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, speed * Time.deltaTime);
+
+            deltaX = Player.transform.position.x - transform.position.x;
+            deltaY = Player.transform.position.y - transform.position.y;
+
             if (Vector2.Distance(transform.position, Player.transform.position) > outOfRange)
             {
                 taxChase = false;
                 criminalChase = false;
                 checkPlayer = false;
+                activePatrol = true;
             }
             
      
@@ -58,23 +180,66 @@ public class Guard : MonoBehaviour
         {
             checkPlayer = true;
 
-            if (GameObject.Find("TaxCollector").GetComponent<TaxCollector>().lateDue > 0 && taxCollected == false && gracePeriod == false)
+            if (taxCollector.GetComponent<TaxCollector>().lateDue > 0 && taxCollected == false && gracePeriod == false)
             {
+                activePatrol = false;
                 taxChase = true;
+                
             }
             else if (((criminalRating > 0 && (rnd.Next(1, 100) <= criminalRating)) || curfew == true || failedSteal == true) && taxChase == false)
             {
+                activePatrol = false;
                 criminalChase = true;
             }
         }
 
-        if (GameObject.Find("Clock").AddComponent<TimeTracker>().hoursDisplay == "06")
+        if (timeTracker.hoursDisplay == "06")
         {
             taxCollected = false;
         }
 
-        curfew = GameObject.Find("Clock").AddComponent<TimeTracker>().curfew;
-        
+        curfew = timeTracker.curfew;
+
+        absDeltaX = System.Math.Abs(deltaX);
+        absDeltaY = System.Math.Abs(deltaY);
+
+        if (absDeltaX > absDeltaY)
+        {
+            if (deltaX > 0)
+            {
+                animator.SetFloat("IdleHorizontal", 1);
+                animator.SetFloat("IdleVertical", 0);
+                animator.SetFloat("Horizontal", 1);
+                animator.SetFloat("Vertical", 0);
+            }
+            else if (deltaX < 0)
+            {
+
+                animator.SetFloat("IdleHorizontal", -1);
+                animator.SetFloat("IdleVertical", 0);
+                animator.SetFloat("Horizontal", -1);
+                animator.SetFloat("Vertical", 0);
+            }
+        }
+        else if (absDeltaX < absDeltaY)
+        {
+            if (deltaY > 0)
+            {
+                animator.SetFloat("IdleHorizontal", 0);
+                animator.SetFloat("IdleVertical", 1);
+                animator.SetFloat("Horizontal", 0);
+                animator.SetFloat("Vertical", 1);
+            }
+            else if (deltaY < 0)
+            {
+                animator.SetFloat("IdleHorizontal", 0);
+                animator.SetFloat("IdleVertical", -1);
+                animator.SetFloat("Horizontal", 0);
+                animator.SetFloat("Vertical", -1);
+            }
+
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -90,7 +255,7 @@ public class Guard : MonoBehaviour
 
                 script.gold -= fine(script);
 
-                script.hp -= taxDamage();
+                script.TakeDamage(taxDamage());
                 taxCollected = true;
 
                 script.TakeDamage(taxDamage());
@@ -105,11 +270,11 @@ public class Guard : MonoBehaviour
 
                 if(curfew == true)
                 {
-                    script.hp -= 10;
+                    script.TakeDamage(10);
                 }
                 else{
                     script.TakeDamage(crimeDamage(script));
-                    script.inventory.clearStolenGoods();
+                   // script.inventory.clearStolenGoods();
                     script.GetComponent<Controller>().criminalRating = 0;
                 }
                
@@ -118,7 +283,9 @@ public class Guard : MonoBehaviour
 
 
             }
-            
+
+            activePatrol = true;
+
         }
 
 
@@ -127,7 +294,7 @@ public class Guard : MonoBehaviour
 
     private int taxDamage()
     {
-        int damage = (int)System.Math.Ceiling((double)GameObject.Find("TaxCollector").GetComponent<TaxCollector>().lateDue * (.5+damageModified));
+        int damage =(int)System.Math.Ceiling((double)taxCollectorScript.lateDue * (.5+damageModified));
         
         return damage;
     }
@@ -140,21 +307,21 @@ public class Guard : MonoBehaviour
 
     private int fine(Controller script)
     {
-        int fine = GameObject.Find("TaxCollector").GetComponent<TaxCollector>().lateDue;
+        int fine = taxCollectorScript.lateDue;
         double denominator = (double)fine;
         double numerator = 0;
         if(fine > script.gold)
         {
-            GameObject.Find("TaxCollector").GetComponent<TaxCollector>().lateDue -= script.gold;
-            numerator = (double)GameObject.Find("TaxCollector").GetComponent<TaxCollector>().lateDue;
+            taxCollectorScript.lateDue -= script.gold;
+            numerator = (double)taxCollectorScript.lateDue;
             fine = script.gold;
            
             damageModifier(numerator / denominator);
         }
         else if(fine<= script.gold)
         {
-            
-            GameObject.Find("TaxCollector").GetComponent<TaxCollector>().lateDue =0;
+
+            taxCollectorScript.lateDue =0;
             
         }
 
@@ -164,9 +331,12 @@ public class Guard : MonoBehaviour
 
     private int crimeDamage(Controller script)
     {
-        int damage = (int)System.Math.Ceiling((double)script.stolenGoodsValue() * .5);
+        int damage = 0;// (int)System.Math.Ceiling((double)script.stolenGoodsValue() * .5);
 
         return damage;
     }
+
     
 }
+    
+

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Interactible
   - Market Item
+  - Guard
+  - Civilian
   layers:
   - Default
   - TransparentFX
@@ -55,6 +57,9 @@ TagManager:
   - name: Bridges
     uniqueID: 3445956811
     locked: 0
+  - name: NPCs
+    uniqueID: 1196717531
+    locked: 0
   - name: MainCharacter
     uniqueID: 1046360185
     locked: 0
@@ -63,9 +68,6 @@ TagManager:
     locked: 0
   - name: Market Items
     uniqueID: 1738746777
-    locked: 0
-  - name: NPCs
-    uniqueID: 1196717531
     locked: 0
   - name: New Layer
     uniqueID: 1738746777
