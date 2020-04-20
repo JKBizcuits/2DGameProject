@@ -29,6 +29,7 @@ public class Controller : MonoBehaviour
 
     public int currentHealth;
     public HealthBarScript healthBar;
+    public Canvas deathCanvas;
 
     public int maxFood = 100;
     public int currentFood;
@@ -68,6 +69,8 @@ public class Controller : MonoBehaviour
         sleep = false;
         gold = 100;
         moneyCount.text = $"{gold}";
+
+        deathCanvas.enabled = false;
 
     }//end Start
 
@@ -136,7 +139,7 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GetHungrier(2);
+            TakeDamage(2);
         }
 
         
@@ -146,7 +149,6 @@ public class Controller : MonoBehaviour
             GetHungrier(2);
             previousHours = time.GetHours();
         }
-
 
     }//end Update
 
@@ -173,6 +175,9 @@ public class Controller : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+            deathCanvas.enabled = true;
 
     }//end TakeDamage
 

@@ -241,9 +241,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 819794574}
   prefab: {fileID: 133261200695589962, guid: b19de0b3aa06d4376b20ed5752fe87d8, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &12077886
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +304,8 @@ MonoBehaviour:
   - {fileID: 144694196}
   - {fileID: 1109345414}
   - {fileID: 674951136}
+  movement: {x: 0, y: 0}
+  activePatrol: 0
 --- !u!95 &12077889
 Animator:
   serializedVersion: 3
@@ -501,6 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 8
+  addHunger: {fileID: 0}
 --- !u!1 &44711115
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,9 +919,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 2104819114}
   prefab: {fileID: 5809912910856061259, guid: 3745ea54b63c4418686021fbe6c3bed8, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &65794754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,8 +2177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9367b97637124396b9f1dbe929fa355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 920726853}
-  money: 0
 --- !u!114 &245488369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2254,6 +2267,8 @@ MonoBehaviour:
   - {fileID: 888963315}
   - {fileID: 1646742775}
   - {fileID: 1080341148}
+  movement: {x: 0, y: 0}
+  activePatrol: 0
 --- !u!95 &252636026
 Animator:
   serializedVersion: 3
@@ -2370,6 +2385,79 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &253843204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 253843205}
+  - component: {fileID: 253843207}
+  - component: {fileID: 253843206}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &253843205
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253843204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2017094896}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -349.03, y: -218.76}
+  m_SizeDelta: {x: 12.387, y: 5.675}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &253843206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253843204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3779da3d3aec3b84591a932299358187, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &253843207
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253843204}
+  m_CullTransparentMesh: 0
 --- !u!1 &254026280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,10 +2720,17 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 20
   healthBar: {fileID: 178346913}
+  deathCanvas: {fileID: 2017094895}
   maxFood: 50
   currentFood: 50
   foodBar: {fileID: 592451605}
   gold: 0
+  tier: 0
+  criminalRating: 0
+  time: {fileID: 0}
+  previousHours: 
+  sleep: 0
+  moneyCount: {fileID: 0}
 --- !u!212 &260096379
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2732,6 +2827,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3816525abc35dc847b5870650ff1d9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   playerStatus: pleb
   currentJob: 
   jobDone: 0
@@ -2772,7 +2870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea53237d0f954643a6416ea356dd008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyCount: {fileID: 0}
 --- !u!1 &284515664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,9 +3054,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 1908449509}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &327824433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50743,9 +50846,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 117230516}
   prefab: {fileID: 3300250510288550175, guid: 84b9ffdaa4f2a4949b88f81cee7990a3, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &383450910
 GameObject:
   m_ObjectHideFlags: 0
@@ -50956,6 +51065,8 @@ MonoBehaviour:
   - {fileID: 1837380381}
   - {fileID: 991820256}
   - {fileID: 976073876}
+  movement: {x: 0, y: 0}
+  activePatrol: 0
 --- !u!95 &388601526
 Animator:
   serializedVersion: 3
@@ -51424,6 +51535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 2
+  addHunger: {fileID: 0}
 --- !u!1 &421429415
 GameObject:
   m_ObjectHideFlags: 0
@@ -51798,6 +51910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 6
+  addHunger: {fileID: 0}
 --- !u!1 &457536203
 GameObject:
   m_ObjectHideFlags: 0
@@ -52199,6 +52312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 5
+  addHunger: {fileID: 0}
 --- !u!1 &491868230
 GameObject:
   m_ObjectHideFlags: 0
@@ -53163,9 +53277,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 1584461466}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &633239736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53287,9 +53407,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 1987847920}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &649399501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53702,6 +53828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 0
+  addHunger: {fileID: 0}
 --- !u!1 &714396275
 GameObject:
   m_ObjectHideFlags: 0
@@ -53974,9 +54101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 111824011}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &761431142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54676,9 +54809,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 2049816746}
   prefab: {fileID: 6070226889048875003, guid: f865308df3d7e4682bfd2aa9b73edb93, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &816608935
 GameObject:
   m_ObjectHideFlags: 0
@@ -54939,9 +55078,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 851452817}
   prefab: {fileID: 7452515985384177148, guid: 62a04e0f2485e4fd6b25736dc5d6a9c8, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &834181101
 GameObject:
   m_ObjectHideFlags: 0
@@ -55512,6 +55657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 9
+  addHunger: {fileID: 0}
 --- !u!1 &886981008
 GameObject:
   m_ObjectHideFlags: 0
@@ -55633,9 +55779,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 774194145}
   prefab: {fileID: 8190322099826831725, guid: 526e6032374464a69aa61cad3d6f1dae, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &888963314
 GameObject:
   m_ObjectHideFlags: 0
@@ -56016,9 +56168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 857152948}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &920726851
 GameObject:
   m_ObjectHideFlags: 0
@@ -58314,6 +58472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 4
+  addHunger: {fileID: 0}
 --- !u!1 &1057122513
 GameObject:
   m_ObjectHideFlags: 0
@@ -58575,7 +58734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee95e6c37058714b88113498c301a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hours: 0
   hoursDisplay: 
   days: 0
   displayText: {fileID: 0}
@@ -59227,7 +59385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -385.2, y: -234.7}
+  m_AnchoredPosition: {x: -381.3, y: -232.5}
   m_SizeDelta: {x: 77.15, y: 71.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181832001
@@ -59453,9 +59611,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 2046320649}
   prefab: {fileID: 2784210772675639486, guid: 7fd9f55a204ca458d95e5c61ce649d3b, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &1291347905
 GameObject:
   m_ObjectHideFlags: 0
@@ -59569,7 +59733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f29475c590cc94bb939287600da608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1181832001}
 --- !u!114 &1308523078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60544,9 +60707,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 834181106}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &1419489073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61429,9 +61598,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 395096371}
   prefab: {fileID: 6084893289499252318, guid: 5842f50dc90864c5daf9425fbdce7d12, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &1452300339
 GameObject:
   m_ObjectHideFlags: 0
@@ -66250,9 +66425,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 2099910341}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &1497553790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72002,6 +72183,8 @@ MonoBehaviour:
   - {fileID: 65794755}
   - {fileID: 166611399}
   - {fileID: 1308705415}
+  movement: {x: 0, y: 0}
+  activePatrol: 0
 --- !u!95 &1528732234
 Animator:
   serializedVersion: 3
@@ -72359,7 +72542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee95e6c37058714b88113498c301a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hours: 0
   hoursDisplay: 
   days: 0
   displayText: {fileID: 1561220119}
@@ -72947,9 +73129,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 1515736931}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &1630282158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73529,6 +73717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 7
+  addHunger: {fileID: 0}
 --- !u!1 &1715693546
 GameObject:
   m_ObjectHideFlags: 0
@@ -73730,9 +73919,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 1114126419}
   prefab: {fileID: 8625055002606944148, guid: 47a40435945ad4c6b9bab47f853a47ed, type: 3}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &1771417472
 GameObject:
   m_ObjectHideFlags: 0
@@ -73859,9 +74054,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 363572407}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &1785607071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74024,6 +74225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 3
+  addHunger: {fileID: 0}
 --- !u!1 &1817854900
 GameObject:
   m_ObjectHideFlags: 0
@@ -74753,6 +74955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 1
+  addHunger: {fileID: 0}
 --- !u!1 &1908449504
 GameObject:
   m_ObjectHideFlags: 0
@@ -76453,6 +76656,105 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2017094892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2017094896}
+  - component: {fileID: 2017094895}
+  - component: {fileID: 2017094894}
+  - component: {fileID: 2017094893}
+  m_Layer: 5
+  m_Name: DeathCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2017094893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017094892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &2017094894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017094892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &2017094895
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017094892}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &2017094896
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017094892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 253843205}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &2022395851
 GameObject:
   m_ObjectHideFlags: 0
@@ -76507,6 +76809,8 @@ MonoBehaviour:
   - {fileID: 816608936}
   - {fileID: 223892346}
   - {fileID: 1576309425}
+  movement: {x: 0, y: 0}
+  activePatrol: 0
 --- !u!95 &2022395854
 Animator:
   serializedVersion: 3
@@ -77994,9 +78298,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: []
   messageCanvas: {fileID: 1951273569}
   prefab: {fileID: 0}
-  fade: {fileID: 0}
+  character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &2106376750
 BoxCollider2D:
   m_ObjectHideFlags: 0
