@@ -24,7 +24,7 @@ public class Guard : MonoBehaviour
     private bool criminalChase;
     private bool curfew;
     private GameObject taxCollector;
-    private GameObject clock;
+    public GameObject clock;
     private bool activePatrol;
     public Transform[] moveSpots;
     private int randomSpot;
@@ -37,8 +37,11 @@ public class Guard : MonoBehaviour
     private float absDeltaX;
     private float absDeltaY;
 
-    TimeTracker timeTracker;
-    TaxCollector taxCollectorScript;
+    private TimeTracker timeTracker;
+    public TaxCollector taxCollectorScript;
+
+    public GameObject music;
+    private MusicPlayer mp3;
 
 
 
@@ -61,9 +64,10 @@ public class Guard : MonoBehaviour
         activePatrol = true;
         
         taxCollector = GameObject.Find("TaxCollector");
-        clock = GameObject.Find("Clock");
+        
         timeTracker = clock.AddComponent<TimeTracker>();
         taxCollectorScript = taxCollector.GetComponent<TaxCollector>();
+        mp3 = music.GetComponent<MusicPlayer>();
     }
 
     // Update is called once per frame
@@ -170,6 +174,7 @@ public class Guard : MonoBehaviour
                 criminalChase = false;
                 checkPlayer = false;
                 activePatrol = true;
+                mp3.chased = false;
             }
             
      
@@ -184,12 +189,13 @@ public class Guard : MonoBehaviour
             {
                 activePatrol = false;
                 taxChase = true;
-                
+                mp3.chased = true;
             }
             else if (((criminalRating > 0 && (rnd.Next(1, 100) <= criminalRating)) || curfew == true || failedSteal == true) && taxChase == false)
             {
                 activePatrol = false;
                 criminalChase = true;
+                mp3.chased = true;
             }
         }
 

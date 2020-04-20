@@ -1,4 +1,4 @@
-﻿/*using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +23,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Interact") && playerInRange)
+        if(Input.GetButtonDown("Interact2") && playerInRange)
         {
             if (dialogBox.activeInHierarchy==false)
             {
@@ -59,10 +59,10 @@ public class Dialogue : MonoBehaviour
             playerInRange = false;
         }
     }
-
+    /*
     public void button1()
     {
 
     }
+    */
 }
-*/

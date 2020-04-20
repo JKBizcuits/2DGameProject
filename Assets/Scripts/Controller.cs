@@ -12,6 +12,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Controller : MonoBehaviour
 {
@@ -43,6 +45,10 @@ public class Controller : MonoBehaviour
     public TimeTracker time;
     public string previousHours;
 
+    public bool sleep;
+
+    public TextMeshProUGUI moneyCount;
+
 
 
     // Start is called before the first frame update
@@ -59,6 +65,9 @@ public class Controller : MonoBehaviour
 
         time = GameObject.Find("Clock").AddComponent<TimeTracker>();
         previousHours = time.GetHours();
+        sleep = false;
+        gold = 100;
+        moneyCount.text = $"{gold}";
 
     }//end Start
 
@@ -132,7 +141,7 @@ public class Controller : MonoBehaviour
 
         
 
-        if(previousHours != time.GetHours() )
+        if(previousHours != time.GetHours() && sleep == false)
         {
             GetHungrier(2);
             previousHours = time.GetHours();
@@ -173,5 +182,12 @@ public class Controller : MonoBehaviour
         currentFood -= amt;
         foodBar.SetFood(currentFood);
     }
-        
+
+    public void AddMoney(int amt)
+    {
+        gold += amt;
+        moneyCount.text = $"{gold}";
+        System.Console.WriteLine("Money Added");
+    }
+
 }
