@@ -246,6 +246,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 819794574}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &12077886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,6 +1018,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 2104819114}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &65794754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,8 +3187,11 @@ MonoBehaviour:
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
-  messageCanvas: {fileID: 0}
+  messageCanvas: {fileID: 1908449509}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &327824433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50996,6 +51005,9 @@ MonoBehaviour:
   - Worked
   messageCanvas: {fileID: 117230516}
   character: {fileID: 260096375}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!114 &373911877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53392,8 +53404,11 @@ MonoBehaviour:
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
-  messageCanvas: {fileID: 0}
+  messageCanvas: {fileID: 1584461466}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &633239736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53518,8 +53533,11 @@ MonoBehaviour:
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
-  messageCanvas: {fileID: 0}
+  messageCanvas: {fileID: 1987847920}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &649399501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54207,8 +54225,11 @@ MonoBehaviour:
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
-  messageCanvas: {fileID: 0}
+  messageCanvas: {fileID: 111824011}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &761431142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54913,6 +54934,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 2049816746}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &816608935
 GameObject:
   m_ObjectHideFlags: 0
@@ -55178,6 +55202,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 851452817}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &834181101
 GameObject:
   m_ObjectHideFlags: 0
@@ -56049,6 +56076,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 774194145}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &888963314
 GameObject:
   m_ObjectHideFlags: 0
@@ -56434,6 +56464,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 857152948}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &920726851
 GameObject:
   m_ObjectHideFlags: 0
@@ -60092,6 +60125,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 2046320649}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!4 &1235539036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4130194392409410538, guid: 84b9ffdaa4f2a4949b88f81cee7990a3,
@@ -60353,9 +60389,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1308523075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95f29475c590cc94bb939287600da608, type: 3}
+  m_Script: {fileID: 11500000, guid: 68ce74d2b1f41b9429e97b1266493157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  img: {fileID: 0}
 --- !u!114 &1308523078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61194,8 +61231,11 @@ MonoBehaviour:
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
-  messageCanvas: {fileID: 0}
+  messageCanvas: {fileID: 834181106}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &1419489073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62073,6 +62113,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 395096371}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &1452300339
 GameObject:
   m_ObjectHideFlags: 0
@@ -66973,8 +67016,11 @@ MonoBehaviour:
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
-  messageCanvas: {fileID: 0}
+  messageCanvas: {fileID: 2099910341}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &1497553790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73676,11 +73722,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogBox: {fileID: 0}
-  dialogText: {fileID: 0}
+  dialogBox: {fileID: 1868577993}
+  dialogText: {fileID: 1008515572}
   dialog: []
-  messageCanvas: {fileID: 0}
+  messageCanvas: {fileID: 1515736931}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &1630282158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74506,6 +74555,9 @@ MonoBehaviour:
   dialog: []
   messageCanvas: {fileID: 1114126419}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!1 &1771417472
 GameObject:
   m_ObjectHideFlags: 0
@@ -74632,11 +74684,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogBox: {fileID: 0}
-  dialogText: {fileID: 0}
+  dialogBox: {fileID: 1868577993}
+  dialogText: {fileID: 1008515572}
   dialog: []
-  messageCanvas: {fileID: 0}
+  messageCanvas: {fileID: 363572407}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &1785607071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75313,7 +75368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.6, y: -343.3}
+  m_AnchoredPosition: {x: -0.0000019073, y: -165.11}
   m_SizeDelta: {x: 500.8, y: 154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1868577995
@@ -78567,7 +78622,7 @@ GameObject:
   - component: {fileID: 2099910339}
   - component: {fileID: 2099910338}
   m_Layer: 0
-  m_Name: House1Canvas
+  m_Name: House2Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78897,11 +78952,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogBox: {fileID: 0}
-  dialogText: {fileID: 0}
-  dialog: []
-  messageCanvas: {fileID: 0}
+  dialogBox: {fileID: 1868577993}
+  dialogText: {fileID: 1008515572}
+  dialog:
+  - working
+  messageCanvas: {fileID: 1951273569}
   character: {fileID: 0}
+  sell: 0
+  profession: 0
+  sleep: 0
 --- !u!61 &2106376750
 BoxCollider2D:
   m_ObjectHideFlags: 0

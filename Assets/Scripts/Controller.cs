@@ -64,7 +64,7 @@ public class Controller : MonoBehaviour
         foodBar.SetMaxFood(maxFood);
 
         time = GameObject.Find("Clock").AddComponent<TimeTracker>();
-        previousHours = time.GetHours();
+        previousHours = "06";
         sleep = false;
         gold = 100;
         moneyCount.text = $"{gold}";
@@ -187,7 +187,13 @@ public class Controller : MonoBehaviour
     {
         gold += amt;
         moneyCount.text = $"{gold}";
-        System.Console.WriteLine("Money Added");
+        
+    }
+    public void takeMoney(int amt)
+    {
+        gold -= amt;
+        moneyCount.text = $"{gold}";
+        
     }
 
 }

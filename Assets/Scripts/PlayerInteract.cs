@@ -34,8 +34,11 @@ public class PlayerInteract : MonoBehaviour
                 currentInterObj.GetComponent<InteractionObject>().working(job);
             } else if (currentInterObj.GetComponent<InteractionObject>().sleep == true)
             {
+                
                 currentInterObj.GetComponent<InteractionObject>().sleeping();
+
             }
+
         }
 
     }
@@ -58,7 +61,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     
                     item[0] = "bread";
-                    item[1] = "15.0";
+                    item[1] = "15";
                     //currentInterObj.SendMessage("DoSellInteraction", item);
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
@@ -66,83 +69,84 @@ public class PlayerInteract : MonoBehaviour
                 if (currentInterObj.name == "BeetStall")
                 {
                     item[0] = "beets";
-                    item[1] = "5.0";
+                    item[1] = "5";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
                 if (currentInterObj.name == "AppleStall")
                 {
                     item[0] = "apples";
-                    item[1] = "8.0";
+                    item[1] = "8";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
                 if (currentInterObj.name == "CarrotStall")
                 {
                     item[0] = "carrots";
-                    item[1] = "6.0";
+                    item[1] = "6";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
                 if (currentInterObj.name == "BananaStall")
                 {
                     item[0] = "bananas";
-                    item[1] = "7.0";
+                    item[1] = "7";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
                 if (currentInterObj.name == "PeaStall")
                 {
                     item[0] = "peass";
-                    item[1] = "2.0";
+                    item[1] = "2";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
                 if (currentInterObj.name == "PepperStall")
                 {
                     item[0] = "peppers";
-                    item[1] = "3.0";
+                    item[1] = "3";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
                 if (currentInterObj.name == "BookStall")
                 {
                     item[0] = "books";
-                    item[1] = "100.0";
+                    item[1] = "100";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
                 if (currentInterObj.name == "OrangeStall")
                 {
                     item[0] = "oranges";
-                    item[1] = "7.0";
+                    item[1] = "7";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
                 if (currentInterObj.name == "CornStall")
                 {
                     item[0] = "corn";
-                    item[1] = "11.0";
+                    item[1] = "11";
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
             }
 
-            if (jobDone == false)
+            else if (jobDone == false)
             {
+
                 if (currentInterObj.CompareTag("Level0Job"))
                 {
                     if (playerStatus == "pleb")
                     {
                         if (currentInterObj.name == "JobFarmRight" || currentInterObj.name == "JobFarmLeft")
                         {
+
                             job[0] = 6;
                             job[1] = 10;
                             currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
                         }
                     }
                 }
-
                 else if (currentInterObj.CompareTag("Level1Job"))
                 {
                     if (playerStatus == "townfolk")
@@ -162,13 +166,13 @@ public class PlayerInteract : MonoBehaviour
                         }
                     }
                 }
-
                 else if (currentInterObj.CompareTag("Level2Job"))
                 {
                     if (playerStatus == "fancylad")
                     {
                         if (currentInterObj.name == "JobMerchent")
                         {
+                            
                             job[0] = 10;
                             job[1] = 9;
                             currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
@@ -186,20 +190,22 @@ public class PlayerInteract : MonoBehaviour
 
             if (currentInterObj.CompareTag("Level0House"))
             {
+
                 if (playerStatus == "pleb")
-                    currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
+                    
+                currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
             }
 
             if (currentInterObj.CompareTag("Level1House"))
             {
                 if (playerStatus == "townfolk")
-                    currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
+                    currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
             }
 
             if (currentInterObj.CompareTag("Level0House"))
             {
                 if (playerStatus == "fancylad")
-                    currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
+                    currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
             }
 
         }

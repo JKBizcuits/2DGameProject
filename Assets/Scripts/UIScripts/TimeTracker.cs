@@ -25,7 +25,7 @@ public class TimeTracker : MonoBehaviour
 
         curfew = false;
 
-        addedTime = 360;
+        addedTime = 420;
 
     }//end start
 
@@ -83,5 +83,36 @@ public class TimeTracker : MonoBehaviour
         return hoursDisplay;
 
     }//end getHours
+
+    public void updateTime()
+    {
+        totalSeconds = Time.fixedTime + addedTime;
+
+        //We want each second to be one minute in this game.
+        minutes = totalSeconds;
+        hours = minutes / 60;
+        days = hours / 24;
+
+        if ((minutes % 60) < 10)
+        {
+            minutesDisplay = $"0{(int)minutes % 60}";
+        }
+        else
+        {
+            minutesDisplay = $"{(int)minutes % 60}";
+        }
+
+        if ((hours % 24) < 10)
+        {
+            hoursDisplay = $"0{(int)hours % 24}";
+        }
+        else
+        {
+            hoursDisplay = $"{(int)hours % 24}";
+        }
+
+        displayText.text = $"Day {(int)days} Time {hoursDisplay}:{minutesDisplay}";
+
+    }
 
 }

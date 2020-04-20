@@ -42,6 +42,7 @@ public class InteractionObject : MonoBehaviour
     {
         sell = true;
         messageCanvas.enabled = true;
+           
         /*money = character.GetComponent<Controller>().gold;
         if (dialogBox.activeInHierarchy)
         {
@@ -86,6 +87,7 @@ public class InteractionObject : MonoBehaviour
 
     public void selling(string[] item)
     {
+        
         money = character.GetComponent<Controller>().gold;
         /*if (dialogBox.activeInHierarchy)
         {
@@ -95,24 +97,48 @@ public class InteractionObject : MonoBehaviour
         {
             dialogBox.SetActive(true);
         }*/
-        string itemName = item[1];
-        double itemPrice = Convert.ToDouble(item[2]);
+        string itemName = item[0];
+        int itemPrice = int.Parse(item[1]);
         
 
-        double increase = itemPrice * .1;
+  
         if (stolenFrom == true)
         {
-            itemPrice += increase;
-            Math.Ceiling(itemPrice);
+            double increase = (double)itemPrice * .1;
+            increase += (double)itemPrice;
+            itemPrice += (int)Math.Ceiling(increase);
+            
         }
 
         finalPrice = Convert.ToInt32(itemPrice);
+        if (money >= itemPrice)
+        {
 
+            //SendMessage("SubtractMoney", "itemPrice");
+            character.GetComponent<Controller>().takeMoney(itemPrice);
+            //Inventory.NextSlot(itemName);
+            //show item in inventory
+            if (dialogBox.activeInHierarchy)
+        {
+            dialogBox.SetActive(false);
+        }
+        else
+        {
+            dialogBox.SetActive(true);
+        }
+
+        }
+
+        else
+        {
+
+        }
+        /*
         if (Input.GetButtonDown("Interact"))
         {
-            /*dialogBox.SetActive(true);
+            dialogBox.SetActive(true);
                 i = 0;
-                dialogText.text = dialog[i];*/
+                dialogText.text = dialog[i];
             if (money >= itemPrice)
             {
 
@@ -127,7 +153,7 @@ public class InteractionObject : MonoBehaviour
             {
 
             }
-        }
+        }*/
     }
 
     public void IsStolenFrom()
@@ -145,6 +171,14 @@ public class InteractionObject : MonoBehaviour
 
     public void DoJobInteraction()
     {
+        if (dialogBox.activeInHierarchy)
+        {
+            dialogBox.SetActive(false);
+        }
+        else
+        {
+            dialogBox.SetActive(true);
+        }
         /*
         //Console.WriteLine("Job Interaqction"); // You spelled interaction wrong
         int hoursPassed = 0;
@@ -198,29 +232,27 @@ public class InteractionObject : MonoBehaviour
         int maxHours = job[0];
         int hourPay = job[1];
 
-        if (Input.GetButtonDown("Interact"))
+        character.GetComponent<PlayerInteract>().jobDone = true;
+        messageCanvas.SendMessage("FadeImage", "false");
+
+        while (hours > 22 && hours < 6)
         {
-            character.GetComponent<PlayerInteract>().jobDone = true;
-            messageCanvas.SendMessage("FadeImage", "false");
 
-            while (hours > 22 && hours < 6)
-            {
-
-                time.addedTime += (60 - time.getMinutesDisplay());
-                hoursPassed += 1;
-                //FoodPoints -= 2;
-            }
+            time.addedTime += (60 - time.getMinutesDisplay());
+            hoursPassed += 1;
+            //FoodPoints -= 2;
         }
 
         messageCanvas.enabled = false;
         fullPay = hoursPassed * hourPay;
         //SendMessage("AddMoney", "fullPay");
-        money += fullPay;
+        character.GetComponent<Controller>().AddMoney(fullPay);
         SendMessage("FadeImage", "true");
     }
 
     public void DoSleepInteraction()
     {
+        
         sleep = true;
         messageCanvas.enabled = true;/*
         status = character.GetComponent<PlayerInteract>().playerStatus;
@@ -263,40 +295,47 @@ public class InteractionObject : MonoBehaviour
 
     public void sleeping()
     {
+        
         status = character.GetComponent<PlayerInteract>().playerStatus;
         //int time = Convert.ToInt32(GameObject.Find("Time").GetComponent<TimeTracker>().hoursDisplay);
         money = character.GetComponent<Controller>().gold;
         hours = time.getHoursDisplay();
-
-        if (Input.GetButtonDown("Interact"))
+        
+        messageCanvas.SendMessage("FadeImage", "false");
+        
+        if (money > 100000 && status == "fancylad")
         {
-            messageCanvas.SendMessage("FadeImage", "false");
+            //win
+            //honestly, nobody gonna win, so I'm a just leave this one blank XD
+        }
 
-            if (money > 100000 && status == "fancylad")
-            {
-                //win
-                //honestly, nobody gonna win, so I'm a just leave this one blank XD
-            }
+        if (money > 10000 && status == "townfolk")
+        {
+            character.GetComponent<PlayerInteract>().possibleStatus = "fancylad";
+        }
 
-            if (money > 10000 && status == "townfolk")
-            {
-                character.GetComponent<PlayerInteract>().possibleStatus = "fancylad";
-            }
-
-            if (money > 1000 && status == "pleb")
-            {
-                character.GetComponent<PlayerInteract>().possibleStatus = "townfolk";
-            }
-
-            while (hours != 6)
-            {
-                character.GetComponent<Controller>().sleep = true;
-                time.addedTime += (60 - time.getMinutesDisplay());
-                character.GetComponent<Controller>().GetHungrier(1);
-            }
-
-            messageCanvas.SendMessage("FadeImage", "true");
-            character.GetComponent<Controller>().sleep = false;
+        if (money > 1000 && status == "pleb")
+        {
+            character.GetComponent<PlayerInteract>().possibleStatus = "townfolk";
+        }
+        
+        while (hours != 6)
+        {
+            character.GetComponent<Controller>().sleep = true;
+            time.addedTime += (60 - time.getMinutesDisplay());
+            time.updateTime();
+            character.GetComponent<Controller>().GetHungrier(1);
+        }
+        
+        messageCanvas.SendMessage("FadeImage", "true");
+        character.GetComponent<Controller>().sleep = false;
+        if (dialogBox.activeInHierarchy)
+        {
+            dialogBox.SetActive(false);
+        }
+        else
+        {
+            dialogBox.SetActive(true);
         }
     }
 }/*using System;
