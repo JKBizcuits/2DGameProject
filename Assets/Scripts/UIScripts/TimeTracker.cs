@@ -25,7 +25,7 @@ public class TimeTracker : MonoBehaviour
 
         curfew = false;
 
-        addedTime = 420;
+        addedTime = 360;
 
     }//end start
 
@@ -84,6 +84,20 @@ public class TimeTracker : MonoBehaviour
 
     }//end getHours
 
+    public void setDisplayMinutesToZero()
+    {
+        minutesDisplay = "00";
+    }
+    public void setDisplayHours( int i)
+    {
+        hoursDisplay = $"{((int)hours % 24) + i}";
+
+    }
+
+    public void changeAddedTime(float f)
+    {
+        addedTime += f;
+    }
     public void updateTime()
     {
         totalSeconds = Time.fixedTime + addedTime;

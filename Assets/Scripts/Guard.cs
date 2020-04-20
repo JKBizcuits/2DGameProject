@@ -63,7 +63,7 @@ public class Guard : MonoBehaviour
         criminalChase = false;
         activePatrol = true;
         
-        taxCollector = GameObject.Find("TaxCollector");
+        taxCollector = GameObject.Find("Butch");
         
         timeTracker = clock.AddComponent<TimeTracker>();
         taxCollectorScript = taxCollector.GetComponent<TaxCollector>();
@@ -259,7 +259,7 @@ public class Guard : MonoBehaviour
             {
                 taxChase = false;
 
-                script.gold -= fine(script);
+                script.takeMoney(fine(script));
 
                 script.TakeDamage(taxDamage());
                 taxCollected = true;

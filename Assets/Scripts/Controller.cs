@@ -31,7 +31,7 @@ public class Controller : MonoBehaviour
     public HealthBarScript healthBar;
 
     public int maxFood = 100;
-    public int currentFood;
+    public int currentFood = 100;
     public FoodBarScript foodBar;
 
     private Rigidbody2D rb;

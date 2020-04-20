@@ -19,14 +19,14 @@ public class TaxCollector : MonoBehaviour
     void Start()
     {
         clock = GameObject.Find("Clock");
-        guard = GameObject.Find("Guard");
+        guard = GameObject.Find("Gustavus");
     }
 
     // Update is called once per frame
     void Update()
     {
         if (tier == 0)
-        {
+        {   
             gracePeriodRenewal = 0;
         }
         else if (tier == 1)

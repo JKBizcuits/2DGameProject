@@ -245,6 +245,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 819794574}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -1017,6 +1018,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 2104819114}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -1045,8 +1047,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65794754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.932564, y: -17.062675, z: -0.17764664}
-  m_LocalScale: {x: 1.1132156, y: 1.1933683, z: 1}
+  m_LocalPosition: {x: -35.288, y: -17.062675, z: -0.17764664}
+  m_LocalScale: {x: 1.188264, y: 1.6279024, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 13
@@ -1606,8 +1608,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144694195}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.232567, y: -18.604675, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -40.912, y: -13.034, z: 0}
+  m_LocalScale: {x: 0.87588, y: -0.85725, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 1
@@ -1716,8 +1718,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166611398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.389565, y: -17.062675, z: -0.17764664}
-  m_LocalScale: {x: 1.1132156, y: 1.1933683, z: 1}
+  m_LocalPosition: {x: -40.047, y: -17.062675, z: -0.17764664}
+  m_LocalScale: {x: 1.188264, y: 1.6279024, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 14
@@ -1746,8 +1748,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173095406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.932564, y: -1.1146755, z: -0.17764664}
-  m_LocalScale: {x: 1, y: 1.2081636, z: 1}
+  m_LocalPosition: {x: -40.709, y: -8.177, z: -0.17764664}
+  m_LocalScale: {x: 1.1225616, y: -1.4933374, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 4
@@ -2171,8 +2173,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223892345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.042564, y: -2.8276749, z: -0.17764664}
-  m_LocalScale: {x: 1.3344944, y: 1.011596, z: 1}
+  m_LocalPosition: {x: -42.456, y: -5.741, z: -0.17764664}
+  m_LocalScale: {x: 1.3454438, y: 1.0112084, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 10
@@ -2368,7 +2370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252636023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 3, z: 0}
+  m_LocalPosition: {x: -35.11, y: -6.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 211377306}
@@ -2988,7 +2990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cd59b57b062ad48a7f8f580e7f320b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lateDue: 1
+  lateDue: 15
   currentDue: 0
   lateInterest: 0
   gracePeriod: 0
@@ -3188,6 +3190,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 1908449509}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -51004,6 +51007,7 @@ MonoBehaviour:
   dialog:
   - Worked
   messageCanvas: {fileID: 117230516}
+  clock: {fileID: 0}
   character: {fileID: 260096375}
   sell: 0
   profession: 0
@@ -53405,6 +53409,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 1584461466}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -53534,6 +53539,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 1987847920}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -53857,8 +53863,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674951135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.232567, y: -15.604675, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -44.416, y: -15.604675, z: 0}
+  m_LocalScale: {x: 0.87588, y: -0.85725, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 3
@@ -54226,6 +54232,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 111824011}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -54409,8 +54416,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769596746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.702564, y: -0.31467438, z: -0.17764664}
-  m_LocalScale: {x: 1.3344944, y: 1.011596, z: 1}
+  m_LocalPosition: {x: -37.072, y: -3.228, z: -0.17764664}
+  m_LocalScale: {x: 1.3454438, y: 1.0112084, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 8
@@ -54933,6 +54940,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 2049816746}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -54961,8 +54969,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816608935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.702564, y: -2.8276749, z: -0.17764664}
-  m_LocalScale: {x: 1.3344944, y: 1.011596, z: 1}
+  m_LocalPosition: {x: -37.072, y: -5.741, z: -0.17764664}
+  m_LocalScale: {x: 1.3454438, y: 1.0112084, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 9
@@ -55201,6 +55209,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 851452817}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -56075,6 +56084,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 774194145}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -56103,8 +56113,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888963314}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -32.859, y: -0.852, z: 0}
+  m_LocalScale: {x: 3.5658774, y: -5.3358526, z: 1}
   m_Children: []
   m_Father: {fileID: 1718865610}
   m_RootOrder: 1
@@ -56463,6 +56473,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 857152948}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -56647,8 +56658,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938312535}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.932564, y: -14.094675, z: -0.17764664}
-  m_LocalScale: {x: 1.1132156, y: 1.1933683, z: 1}
+  m_LocalPosition: {x: -35.288, y: -13.015, z: -0.17764664}
+  m_LocalScale: {x: 1.188264, y: 1.6279024, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 12
@@ -56837,8 +56848,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976073875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -47.932564, y: -1.1146755, z: -0.17764664}
-  m_LocalScale: {x: 1, y: 1.2081636, z: 1}
+  m_LocalPosition: {x: -45.194, y: -8.177, z: -0.17764664}
+  m_LocalScale: {x: 1.1225616, y: -1.4933374, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 7
@@ -57023,8 +57034,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991820255}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -47.932564, y: -4.1146755, z: -0.17764664}
-  m_LocalScale: {x: 1, y: 1.2081636, z: 1}
+  m_LocalPosition: {x: -45.194, y: -4.468, z: -0.17764664}
+  m_LocalScale: {x: 1.1225616, y: -1.4933374, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 6
@@ -59187,8 +59198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080341147}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -47.133, y: -16.844, z: 0}
+  m_LocalScale: {x: 3.5658774, y: -5.3358526, z: 1}
   m_Children: []
   m_Father: {fileID: 1718865610}
   m_RootOrder: 3
@@ -59338,8 +59349,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109345413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.232567, y: -18.604675, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -44.416, y: -13.034, z: 0}
+  m_LocalScale: {x: 0.87588, y: -0.85725, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 2
@@ -60124,6 +60135,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 2046320649}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -60606,8 +60618,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308705414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.389565, y: -14.094675, z: -0.17764664}
-  m_LocalScale: {x: 1.1132156, y: 1.1933683, z: 1}
+  m_LocalPosition: {x: -40.047, y: -13.015, z: -0.17764664}
+  m_LocalScale: {x: 1.188264, y: 1.6279024, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 15
@@ -61176,8 +61188,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418408020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -32.859, y: -16.844, z: 0}
+  m_LocalScale: {x: 3.5658774, y: -5.3358526, z: 1}
   m_Children: []
   m_Father: {fileID: 1718865610}
   m_RootOrder: 0
@@ -61232,6 +61244,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 834181106}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -62112,6 +62125,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 395096371}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -67017,6 +67031,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 2099910341}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -73252,8 +73267,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576309424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.042564, y: -0.31467438, z: -0.17764664}
-  m_LocalScale: {x: 1.3344944, y: 1.011596, z: 1}
+  m_LocalPosition: {x: -42.456, y: -3.228, z: -0.17764664}
+  m_LocalScale: {x: 1.3454438, y: 1.0112084, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 11
@@ -73726,6 +73741,7 @@ MonoBehaviour:
   dialogText: {fileID: 1008515572}
   dialog: []
   messageCanvas: {fileID: 1515736931}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -73991,8 +74007,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646742774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -47.133, y: -0.852, z: 0}
+  m_LocalScale: {x: 3.5658774, y: -5.3358526, z: 1}
   m_Children: []
   m_Father: {fileID: 1718865610}
   m_RootOrder: 2
@@ -74222,8 +74238,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704155122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.232567, y: -15.604675, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -40.912, y: -15.604675, z: 0}
+  m_LocalScale: {x: 0.87588, y: -0.85725, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 0
@@ -74554,6 +74570,7 @@ MonoBehaviour:
   dialogText: {fileID: 0}
   dialog: []
   messageCanvas: {fileID: 1114126419}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -74688,6 +74705,7 @@ MonoBehaviour:
   dialogText: {fileID: 1008515572}
   dialog: []
   messageCanvas: {fileID: 363572407}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0
@@ -75114,8 +75132,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837380380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.932564, y: -4.1146755, z: -0.17764664}
-  m_LocalScale: {x: 1, y: 1.2081636, z: 1}
+  m_LocalPosition: {x: -40.709, y: -4.468, z: -0.17764664}
+  m_LocalScale: {x: 1.1225616, y: -1.4933374, z: 1}
   m_Children: []
   m_Father: {fileID: 1926862964}
   m_RootOrder: 5
@@ -78920,7 +78938,7 @@ GameObject:
   - component: {fileID: 2106376749}
   m_Layer: 0
   m_Name: JobBlacksmith
-  m_TagString: Level1Job
+  m_TagString: Interactible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78957,6 +78975,7 @@ MonoBehaviour:
   dialog:
   - working
   messageCanvas: {fileID: 1951273569}
+  clock: {fileID: 0}
   character: {fileID: 0}
   sell: 0
   profession: 0

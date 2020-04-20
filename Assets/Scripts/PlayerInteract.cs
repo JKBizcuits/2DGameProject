@@ -16,6 +16,7 @@ public class PlayerInteract : MonoBehaviour
     public string currentJob = null;
     public bool jobDone = false;
     public string possibleStatus = "pleb";
+    bool jobbing;
 
     string[] item;
     int[] job;
@@ -24,20 +25,20 @@ public class PlayerInteract : MonoBehaviour
     {
         if (GameObject.Find("Time").GetComponent<TimeTracker>().curfew == true)
             jobDone = false;
-        if (currentInterObj != null && currentInterObj.GetComponent<InteractionObject>().messageCanvas.enabled && Input.GetButtonDown("Interact"))
+        if (currentInterObj != null && Input.GetButtonDown("Interact"))
         {
-            if(currentInterObj.GetComponent<InteractionObject>().sell == true)
+            if (currentInterObj.GetComponent<InteractionObject>().sell == true)
             {
                 currentInterObj.GetComponent<InteractionObject>().selling(item);
-            } else if (currentInterObj.GetComponent<InteractionObject>().profession == true)
+            }
+            else if (jobbing == true)
             {
-                currentInterObj.GetComponent<InteractionObject>().working(job);
-            } else if (currentInterObj.GetComponent<InteractionObject>().sleep == true)
+                GameObject.Find("Character").GetComponent<Controller>().AddMoney(20);
+            } /*else if (currentInterObj.GetComponent<InteractionObject>().sleep == true)
             {
                 
                 currentInterObj.GetComponent<InteractionObject>().sleeping();
-
-            }
+            }*/
 
         }
 
@@ -59,7 +60,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (currentInterObj.name == "BreadStall")
                 {
-                    
+
                     item[0] = "bread";
                     item[1] = "15";
                     //currentInterObj.SendMessage("DoSellInteraction", item);
@@ -129,8 +130,17 @@ public class PlayerInteract : MonoBehaviour
                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
                 }
 
-            }
+                if (currentInterObj.name == "JobBlacksmith")
+                {
+                    job[0] = 7;
+                    job[1] = 10;
+                    jobbing = true;
+                }
 
+
+
+            }
+            /*
             else if (jobDone == false)
             {
 
@@ -210,26 +220,28 @@ public class PlayerInteract : MonoBehaviour
 
         }
     }
+    */
+            void OnTriggerExit2D(Collider2D other)
+            {
+                if (other.CompareTag("Interactible") || other.CompareTag("Level0Job") || other.CompareTag("Level1Job") ||
+                    other.CompareTag("Level2Job") || other.CompareTag("Level0House") || other.CompareTag("Level1House") ||
+                    other.CompareTag("Level2House"))
+                {
+                    currentInterObj = other.gameObject;
+                    currentInterObj.SendMessage("LeaveInteraction");
+                    currentInterObj = null;
+                }
+                /*if (other.gameObject == currentInterObj.gameObject)
+                {
+                    currentInterObj.SendMessage("LeaveInteraction");
+                    currentInterObj = null;
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.CompareTag("Interactible") || other.CompareTag("Level0Job") || other.CompareTag("Level1Job") ||
-            other.CompareTag("Level2Job") || other.CompareTag("Level0House") || other.CompareTag("Level1House") ||
-            other.CompareTag("Level2House"))
-        {
-            currentInterObj = other.gameObject;
-            currentInterObj.SendMessage("LeaveInteraction");
-            currentInterObj = null;
+                }*/
+
+            }
+
         }
-        /*if (other.gameObject == currentInterObj.gameObject)
-        {
-            currentInterObj.SendMessage("LeaveInteraction");
-            currentInterObj = null;
-
-        }*/
-
     }
-
 }
 /*using System.Collections;
 using System.Collections.Generic;

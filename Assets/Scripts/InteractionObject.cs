@@ -14,7 +14,7 @@ public class InteractionObject : MonoBehaviour
 
     bool stolenFrom = false;
     public Canvas messageCanvas;
-    private GameObject clock;
+    public GameObject clock;
     private TimeTracker time;
     private int hours;
     public GameObject character;
@@ -30,7 +30,7 @@ public class InteractionObject : MonoBehaviour
     private void Start()
     {
         messageCanvas.enabled = false;
-        clock = GameObject.Find("Clock");
+
         time = clock.GetComponent<TimeTracker>();
         character = GameObject.Find("Character");
         sell = false;
@@ -42,7 +42,7 @@ public class InteractionObject : MonoBehaviour
     {
         sell = true;
         messageCanvas.enabled = true;
-           
+
         /*money = character.GetComponent<Controller>().gold;
         if (dialogBox.activeInHierarchy)
         {
@@ -87,7 +87,7 @@ public class InteractionObject : MonoBehaviour
 
     public void selling(string[] item)
     {
-        
+
         money = character.GetComponent<Controller>().gold;
         /*if (dialogBox.activeInHierarchy)
         {
@@ -99,15 +99,15 @@ public class InteractionObject : MonoBehaviour
         }*/
         string itemName = item[0];
         int itemPrice = int.Parse(item[1]);
-        
 
-  
+
+
         if (stolenFrom == true)
         {
             double increase = (double)itemPrice * .1;
             increase += (double)itemPrice;
             itemPrice += (int)Math.Ceiling(increase);
-            
+
         }
 
         finalPrice = Convert.ToInt32(itemPrice);
@@ -118,21 +118,9 @@ public class InteractionObject : MonoBehaviour
             character.GetComponent<Controller>().takeMoney(itemPrice);
             //Inventory.NextSlot(itemName);
             //show item in inventory
-            if (dialogBox.activeInHierarchy)
-        {
-            dialogBox.SetActive(false);
-        }
-        else
-        {
-            dialogBox.SetActive(true);
-        }
 
         }
 
-        else
-        {
-
-        }
         /*
         if (Input.GetButtonDown("Interact"))
         {
@@ -170,8 +158,8 @@ public class InteractionObject : MonoBehaviour
     }
 
     public void DoJobInteraction()
-    {
-        if (dialogBox.activeInHierarchy)
+    { 
+       /* if (dialogBox.activeInHierarchy)
         {
             dialogBox.SetActive(false);
         }
@@ -188,47 +176,45 @@ public class InteractionObject : MonoBehaviour
         money = character.GetComponent<Controller>().gold;
         int maxHours = job[0];
         int hourPay = job[1];*/
+        
 
-        if (hours < 22 && hours > 5)
-        {
             messageCanvas.enabled = true;
-            profession = true;
+        profession = true;
 
-            /*if (Input.GetButtonDown("Interact"))
-            {
-                character.GetComponent<PlayerInteract>().jobDone = true;
-                messageCanvas.SendMessage("FadeImage", "false");
-
-                while (hours > 22 && hours < 6)
-                {
-                    
-                    time.addedTime += (60- time.getMinutesDisplay());
-                    hoursPassed += 1;
-                    //FoodPoints -= 2;
-                }
-            }
-
-            messageCanvas.enabled = false;
-            fullPay = hoursPassed * hourPay;
-            SendMessage("AddMoney", "fullPay");
-            SendMessage("FadeImage", "true");*/
-        }
-
-        else
+        /*if (Input.GetButtonDown("Interact"))
         {
-            messageCanvas.enabled = false;
+            character.GetComponent<PlayerInteract>().jobDone = true;
+            messageCanvas.SendMessage("FadeImage", "false");
+
+            while (hours > 22 && hours < 6)
+            {
+
+                time.addedTime += (60- time.getMinutesDisplay());
+                hoursPassed += 1;
+                //FoodPoints -= 2;
+            }
         }
+
+        messageCanvas.enabled = false;
+        fullPay = hoursPassed * hourPay;
+        SendMessage("AddMoney", "fullPay");
+        SendMessage("FadeImage", "true");*/
+
+
+
 
     }
 
-    public void working(int[] job)
+    public void working()
     {
-        money = character.GetComponent<Controller>().gold;
+
+        character.GetComponent<Controller>().AddMoney(10);
+        /*money = character.GetComponent<Controller>().gold;
         int hoursPassed = 0;
         int fullPay = 0;
         hours = time.getHoursDisplay();
         //int time = Convert.ToInt32(GameObject.Find("Time").GetComponent<TimeTracker>().hoursDisplay);
-        
+
         int maxHours = job[0];
         int hourPay = job[1];
 
@@ -247,10 +233,11 @@ public class InteractionObject : MonoBehaviour
         fullPay = hoursPassed * hourPay;
         //SendMessage("AddMoney", "fullPay");
         character.GetComponent<Controller>().AddMoney(fullPay);
-        SendMessage("FadeImage", "true");
+        SendMessage("FadeImage", "true");*/
     }
+}
 
-    public void DoSleepInteraction()
+    /*public void DoSleepInteraction()
     {
         
         sleep = true;
@@ -291,7 +278,7 @@ public class InteractionObject : MonoBehaviour
             character.GetComponent<Controller>().sleep = false;
         }*/
 
-    }
+   /* }
 
     public void sleeping()
     {
@@ -318,27 +305,50 @@ public class InteractionObject : MonoBehaviour
         {
             character.GetComponent<PlayerInteract>().possibleStatus = "townfolk";
         }
-        
-        while (hours != 6)
+
+        time.addedTime += 480;
+        /*
+         * if(time.getHoursDisplay() > 6)
         {
-            character.GetComponent<Controller>().sleep = true;
-            time.addedTime += (60 - time.getMinutesDisplay());
-            time.updateTime();
-            character.GetComponent<Controller>().GetHungrier(1);
+
+            
+            time.changeAddedTime((30 - time.getHoursDisplay())*60);
+
         }
-        
-        messageCanvas.SendMessage("FadeImage", "true");
+        else if(time.getHoursDisplay() < 6)
+        {
+            time.changeAddedTime((6 - time.getHoursDisplay())* 60);
+        }
+        else
+        {
+            time.changeAddedTime((24 * 60));
+        }
+
+            /*int i = 0;
+            while (hours != 6)
+            {
+                i++;
+                character.GetComponent<Controller>().sleep = true;
+                time.addedTime += (60 - time.getMinutesDisplay());
+                time.setDisplayMinutesToZero();
+                time.setDisplayHours(i);   
+                character.GetComponent<Controller>().GetHungrier(1);
+                dialog[0] = $"{ time.addedTime}";
+                dialogText.text = dialog[0];
+            }*/
+
+        /*    messageCanvas.SendMessage("FadeImage", "true");
         character.GetComponent<Controller>().sleep = false;
-        if (dialogBox.activeInHierarchy)
+        /*if (dialogBox.activeInHierarchy)
         {
             dialogBox.SetActive(false);
         }
         else
         {
             dialogBox.SetActive(true);
-        }
-    }
-}/*using System;
+        }*/
+    //}
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -374,6 +384,4 @@ public class InteractionObject : MonoBehaviour
     {
 
     }
-    
-}
-*/
+   */
