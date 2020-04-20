@@ -12,6 +12,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Controller : MonoBehaviour
 {
@@ -19,9 +21,7 @@ public class Controller : MonoBehaviour
     //Any variables that do not have a value will be assigned
     //a textbox under the script in unity where you can edit the value.
     public float speed;
-    private float totalSeconds;
-    private float hours;
-    private float totalHours;
+    
 
     //Health values
 
@@ -30,7 +30,7 @@ public class Controller : MonoBehaviour
     public int currentHealth;
     public HealthBarScript healthBar;
 
-    public int maxFood = 50;
+    public int maxFood = 100;
     public int currentFood;
     public FoodBarScript foodBar;
 
@@ -39,7 +39,15 @@ public class Controller : MonoBehaviour
     private Animator animator;
 
     public int gold;
-   
+    public int tier;
+    public int criminalRating;
+
+    public TimeTracker time;
+    public string previousHours;
+
+    public bool sleep;
+
+    public TextMeshProUGUI moneyCount;
 
 
 
@@ -54,6 +62,12 @@ public class Controller : MonoBehaviour
 
         currentFood = maxFood;
         foodBar.SetMaxFood(maxFood);
+
+        time = GameObject.Find("Clock").AddComponent<TimeTracker>();
+        previousHours = "06";
+        sleep = false;
+        gold = 100;
+        moneyCount.text = $"{gold}";
 
     }//end Start
 
@@ -122,16 +136,15 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(2);
+            GetHungrier(2);
         }
 
-        totalSeconds = Time.fixedTime;
+        
 
-        hours = totalSeconds / 60;
-
-        if(hours == 5 || hours == 10 || hours == 15 || hours == 20)
+        if(previousHours != time.GetHours() && sleep == false)
         {
-            GetHungrier(5);
+            GetHungrier(2);
+            previousHours = time.GetHours();
         }
 
 
@@ -169,5 +182,24 @@ public class Controller : MonoBehaviour
         currentFood -= amt;
         foodBar.SetFood(currentFood);
     }
+
+    public void AddHunger(int amt)
+    {
+        currentFood += amt;
+        foodBar.SetFood(currentFood);
+    }
+
+    public void AddMoney(int amt)
+    {
+        gold += amt;
+        moneyCount.text = $"{gold}";
         
+    }
+    public void takeMoney(int amt)
+    {
+        gold -= amt;
+        moneyCount.text = $"{gold}";
+        
+    }
+
 }

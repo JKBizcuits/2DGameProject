@@ -9,10 +9,11 @@ public class Renter : MonoBehaviour
     public int lateDue;
     public int currentDue;
     public int lateInterest;
+    private GameObject clock;
     // Start is called before the first frame update
     void Start()
     {
-        
+        clock = GameObject.Find("Clock");
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class Renter : MonoBehaviour
 
         }
 
-        if (((int)GameObject.Find("Clock").GetComponent<TimeTracker>().days % 7) == 3)
+        if (((int)clock.GetComponent<TimeTracker>().days % 7) == 3)
         {
             lateDue += currentDue;
             lateDue = lateDue * lateInterest;

@@ -10,7 +10,7 @@ public class MoneyScript : MonoBehaviour
 
     public TextMeshProUGUI text;
 
-    public int money;
+    int money;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +26,5 @@ public class MoneyScript : MonoBehaviour
         money += amt;
         text.text = $"{money}";
         System.Console.WriteLine("Money Added");
-    }
-
-    public void SubtractMoney(int amt)
-    {
-        money -= amt;
-        text.text = $"{money}";
-        System.Console.WriteLine("Money Subtracted");
     }
 }

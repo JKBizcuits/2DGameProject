@@ -112,3 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemButton: {fileID: 3071269985660202703, guid: 058c1b4fdbf764daaa92b40b0489616c,
     type: 3}
+  hungerGiven: 9

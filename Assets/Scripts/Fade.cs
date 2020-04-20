@@ -11,7 +11,7 @@ public class Fade : MonoBehaviour
     {
         FadeImage(true);
     }
-    public IEnumerator FadeImage(bool fadeAway)
+    IEnumerator FadeImage(bool fadeAway)
     {
         // fade from opaque to transparent
         if (fadeAway)

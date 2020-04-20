@@ -6,7 +6,7 @@ public class Animation : MonoBehaviour
 {
     private Animator animator;
     public Vector2 movement;
-    public float speed;
+    
     float deltaX;
     float absDeltaX;
     float deltaY;
@@ -15,13 +15,15 @@ public class Animation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        movement = GetComponent<Patrol>().movement;
         animator = GetComponent<Animator>();
-        animator.SetFloat("Speed", speed);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         deltaX = movement.x;
         deltaY = movement.y;
         absDeltaX = System.Math.Abs(deltaX);
@@ -61,6 +63,7 @@ public class Animation : MonoBehaviour
                 animator.SetFloat("Horizontal", 0);
                 animator.SetFloat("Vertical", -1);
             }
+           
         }
 
         

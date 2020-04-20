@@ -5,10 +5,11 @@ using UnityEngine;
 public class Curfew : MonoBehaviour
 {
     public bool curfew;
-    TimeTracker time = GameObject.Find("Clock").AddComponent<TimeTracker>();
+    TimeTracker time; 
     // Start is called before the first frame update
     void Start()
     {
+        time = GameObject.Find("Clock").AddComponent<TimeTracker>(); 
         curfew = false;
     }
 

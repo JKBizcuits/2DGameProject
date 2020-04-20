@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour
 {
     private Inventory inventory;
     public GameObject itemButton;
+    public int hungerGiven;
 
     private void Start()
     {
@@ -24,10 +25,14 @@ public class Pickup : MonoBehaviour
                     Instantiate(itemButton, inventory.slots[i].transform, false);
                     Destroy(gameObject);
                     break;
-
                 }//end if
 
             }//end for
         }//end if
     }//end onTriggerEnter2D
+
+    public int getHungerGiven()
+    {
+        return hungerGiven;
+    }
 }//end Pickup
