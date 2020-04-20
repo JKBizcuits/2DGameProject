@@ -7,6 +7,7 @@ using TMPro;
 
 public class InteractionObject : MonoBehaviour
 {
+    public GameObject prefab;
     public GameObject dialogBox;
     public TextMeshProUGUI dialogText;
     public string[] dialog;
@@ -116,6 +117,8 @@ public class InteractionObject : MonoBehaviour
 
             //SendMessage("SubtractMoney", "itemPrice");
             character.GetComponent<Controller>().takeMoney(itemPrice);
+            Instantiate(prefab, GameObject.Find("Character").transform.position, Quaternion.identity);
+
             //Inventory.NextSlot(itemName);
             //show item in inventory
 

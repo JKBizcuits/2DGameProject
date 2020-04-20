@@ -16,7 +16,7 @@ public class Slot : MonoBehaviour
 
     private void Update()
     {
-        if(transform.childCount <= 0)
+        if (transform.childCount <= 0)
         {
             inventory.isFull[i] = false;
         }
@@ -24,7 +24,7 @@ public class Slot : MonoBehaviour
 
     public void DropItem()
     {
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
             child.GetComponent<Spawn>().SpawnDroppedItem();
             GameObject.Destroy(child.gameObject);
