@@ -18,6 +18,8 @@ public class PlayerInteract : MonoBehaviour
     bool selling;
     bool jobbing;
     bool sleeping;
+    bool jobMode;
+    bool sleepMode;
     public GameObject clock;
     private TimeTracker time;
     int workedHours;
@@ -26,6 +28,7 @@ public class PlayerInteract : MonoBehaviour
     {
         controller = GetComponent<Controller>();
         time = clock.GetComponent<TimeTracker>();
+        workedHours = 0;
 
     }
 
@@ -37,15 +40,18 @@ public class PlayerInteract : MonoBehaviour
             {
                 controller.takeMoney(value);
             }
-            else if (jobbing == true && job[1] < workedHours )
+            else if (jobbing == true && job[1] > workedHours )
             {
+                jobMode = true;
                 controller.AddMoney(job[0]);
             }
             else if (sleeping == true)
             {
                 //controller.sleep = true;
+                sleepMode = true;
                 time.addedTime += (60 - time.getMinutesDisplay());
                 controller.GetHungrier(1);
+
                 /*if (time.getHoursDisplay() > 6)
                 {
 
@@ -62,6 +68,20 @@ public class PlayerInteract : MonoBehaviour
                     time.changeAddedTime((24 * 60));
                 }*/
             }
+        }
+
+        if(jobMode == true)
+        {
+            if (time.getHoursDisplay() < 22)
+            {
+
+                
+                time.addedTime += (60 - time.getMinutesDisplay());
+            }
+        }
+        else if(sleepMode == true)
+        {
+
         }
 
     }
