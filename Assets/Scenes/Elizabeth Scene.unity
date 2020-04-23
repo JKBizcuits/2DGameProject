@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 133261200695589962, guid: b19de0b3aa06d4376b20ed5752fe87d8, type: 3}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
@@ -573,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 8
+  addHunger: {fileID: 0}
 --- !u!1 &44711115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 5809912910856061259, guid: 3745ea54b63c4418686021fbe6c3bed8, type: 3}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
@@ -2292,7 +2293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 116.22, y: -42.82}
+  m_AnchoredPosition: {x: 116.22, y: -42.820007}
   m_SizeDelta: {x: 259.77, y: 183.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245488368
@@ -2545,7 +2546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -349.03, y: -218.76}
+  m_AnchoredPosition: {x: -340.49, y: -213.12}
   m_SizeDelta: {x: 12.387, y: 5.675}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253843206
@@ -2946,9 +2947,8 @@ MonoBehaviour:
   dialog:
   - This worked
   playerStatus: pleb
-  currentJob: 
-  jobDone: 0
-  possibleStatus: pleb
+  clock: {fileID: 0}
+  prefab: {fileID: 0}
 --- !u!114 &260096383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51067,7 +51067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 3300250510288550175, guid: 84b9ffdaa4f2a4949b88f81cee7990a3, type: 3}
   dialogBox: {fileID: 1868577993}
   dialogText: {fileID: 1008515572}
   dialog:
@@ -51766,6 +51766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 2
+  addHunger: {fileID: 0}
 --- !u!1 &421429415
 GameObject:
   m_ObjectHideFlags: 0
@@ -52140,6 +52141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 6
+  addHunger: {fileID: 0}
 --- !u!1 &457536203
 GameObject:
   m_ObjectHideFlags: 0
@@ -52537,6 +52539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 5
+  addHunger: {fileID: 0}
 --- !u!1 &507830656
 GameObject:
   m_ObjectHideFlags: 0
@@ -54001,6 +54004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 0
+  addHunger: {fileID: 0}
 --- !u!1 &714396275
 GameObject:
   m_ObjectHideFlags: 0
@@ -54982,7 +54986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6070226889048875003, guid: f865308df3d7e4682bfd2aa9b73edb93, type: 3}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
@@ -55252,7 +55256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 7452515985384177148, guid: 62a04e0f2485e4fd6b25736dc5d6a9c8, type: 3}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
@@ -56007,6 +56011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 9
+  addHunger: {fileID: 0}
 --- !u!1 &886981008
 GameObject:
   m_ObjectHideFlags: 0
@@ -56128,7 +56133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8190322099826831725, guid: 526e6032374464a69aa61cad3d6f1dae, type: 3}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
@@ -58979,6 +58984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 4
+  addHunger: {fileID: 0}
 --- !u!1 &1057122513
 GameObject:
   m_ObjectHideFlags: 0
@@ -60163,7 +60169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 2784210772675639486, guid: 7fd9f55a204ca458d95e5c61ce649d3b, type: 3}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
@@ -62143,7 +62149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6084893289499252318, guid: 5842f50dc90864c5daf9425fbdce7d12, type: 3}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
@@ -74265,6 +74271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 7
+  addHunger: {fileID: 0}
 --- !u!1 &1715693546
 GameObject:
   m_ObjectHideFlags: 0
@@ -74500,7 +74507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10100a86f8bdb4581888661dcefa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8625055002606944148, guid: 47a40435945ad4c6b9bab47f853a47ed, type: 3}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: []
@@ -74808,6 +74815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 3
+  addHunger: {fileID: 0}
 --- !u!1 &1817854900
 GameObject:
   m_ObjectHideFlags: 0
@@ -75602,6 +75610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 1
+  addHunger: {fileID: 0}
 --- !u!1 &1908449504
 GameObject:
   m_ObjectHideFlags: 0

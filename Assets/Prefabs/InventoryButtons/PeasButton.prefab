@@ -131,3 +131,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 8190322099826831725, guid: 526e6032374464a69aa61cad3d6f1dae, type: 3}
+  hungerGiven: 2
