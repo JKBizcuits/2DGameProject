@@ -75,7 +75,6 @@ public class PlayerInteract : MonoBehaviour
             if (time.getHoursDisplay() < 22)
             {
 
-                
                 time.addedTime += (60 - time.getMinutesDisplay());
             }
         }
