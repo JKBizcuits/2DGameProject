@@ -2292,7 +2292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 116.22, y: -42.82}
+  m_AnchoredPosition: {x: 116.22, y: -42.820007}
   m_SizeDelta: {x: 259.77, y: 183.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245488368
@@ -2946,9 +2946,7 @@ MonoBehaviour:
   dialog:
   - This worked
   playerStatus: pleb
-  currentJob: 
-  jobDone: 0
-  possibleStatus: pleb
+  clock: {fileID: 1088567870}
 --- !u!114 &260096383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55789,7 +55787,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.384
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -73644,7 +73642,7 @@ GameObject:
   - component: {fileID: 1630282157}
   m_Layer: 0
   m_Name: House0
-  m_TagString: Level0House
+  m_TagString: Interactible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
