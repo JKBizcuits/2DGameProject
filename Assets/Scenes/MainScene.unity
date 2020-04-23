@@ -2292,8 +2292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 112, y: -43}
-  m_SizeDelta: {x: 268.2, y: 184}
+  m_AnchoredPosition: {x: 116.22, y: -42.82}
+  m_SizeDelta: {x: 259.77, y: 183.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245488368
 MonoBehaviour:
@@ -2480,6 +2480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc0a6b5a896a554b90362ecbcb9f4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 260096375}
   speed: 2
   distance: 10
   outOfRange: 20
@@ -2831,17 +2832,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 100
+  currentHealth: 100
   healthBar: {fileID: 178346913}
-  maxFood: 50
-  currentFood: 50
+  maxFood: 100
+  currentFood: 100
   foodBar: {fileID: 592451605}
   gold: 0
   tier: 0
   criminalRating: 0
   time: {fileID: 0}
-  previousHours: 
+  previousHours: 06
   sleep: 0
   moneyCount: {fileID: 920726853}
 --- !u!212 &260096379
@@ -55788,7 +55789,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0

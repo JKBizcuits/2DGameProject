@@ -25,13 +25,13 @@ public class Controller : MonoBehaviour
 
     //Health values
 
-    public int maxHealth = 100;
+    public int maxHealth;
 
     public int currentHealth;
     public HealthBarScript healthBar;
 
-    public int maxFood = 100;
-    public int currentFood = 100;
+    public int maxFood;
+    public int currentFood;
     public FoodBarScript foodBar;
 
     private Rigidbody2D rb;
@@ -62,6 +62,7 @@ public class Controller : MonoBehaviour
 
         currentFood = maxFood;
         foodBar.SetMaxFood(maxFood);
+        currentFood += 4;
 
         time = GameObject.Find("Clock").AddComponent<TimeTracker>();
         previousHours = "06";

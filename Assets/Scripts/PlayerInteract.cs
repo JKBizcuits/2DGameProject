@@ -6,53 +6,71 @@ using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
+    private Controller controller;
     public GameObject dialogBox;
     public TextMeshProUGUI dialogText;
     public string[] dialog;
-    private int i;
-
-    GameObject currentInterObj = null;
-    public string playerStatus = "pleb";
-    public string currentJob = null;
-    public bool jobDone = false;
-    public string possibleStatus = "pleb";
-    bool jobbing;
-
-    string[] item;
+    GameObject currentInterObj;
+    public string playerStatus;
+    string item;
+    int value;
     int[] job;
+    bool selling;
+    bool jobbing;
+    bool sleeping;
+    public GameObject clock;
+    private TimeTracker time;
+    int workedHours;
 
-    private void Update()
+    private void Start()
     {
-        if (GameObject.Find("Time").GetComponent<TimeTracker>().curfew == true)
-            jobDone = false;
+        controller = GetComponent<Controller>();
+        time = clock.GetComponent<TimeTracker>();
+
+    }
+
+    void Update()
+    {
         if (currentInterObj != null && Input.GetButtonDown("Interact"))
         {
-            if (currentInterObj.GetComponent<InteractionObject>().sell == true)
+            if (selling == true && controller.gold > value)
             {
-                currentInterObj.GetComponent<InteractionObject>().selling(item);
+                controller.takeMoney(value);
             }
-            else if (jobbing == true)
+            else if (jobbing == true && job[1] < workedHours )
             {
-                GameObject.Find("Character").GetComponent<Controller>().AddMoney(20);
-            } /*else if (currentInterObj.GetComponent<InteractionObject>().sleep == true)
+                controller.AddMoney(job[0]);
+            }
+            else if (sleeping == true)
             {
-                
-                currentInterObj.GetComponent<InteractionObject>().sleeping();
-            }*/
+                //controller.sleep = true;
+                time.addedTime += (60 - time.getMinutesDisplay());
+                controller.GetHungrier(1);
+                /*if (time.getHoursDisplay() > 6)
+                {
 
+
+                    time.changeAddedTime((30 - time.getHoursDisplay()) * 60);
+                    controller.GetHungrier(1);
+                }
+                else if (time.getHoursDisplay() < 6)
+                {
+                    time.changeAddedTime((6 - time.getHoursDisplay()) * 60);
+                }
+                else
+                {
+                    time.changeAddedTime((24 * 60));
+                }*/
+            }
         }
 
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Job Check, " + currentInterObj.tag + ", " + currentInterObj.name);
-        item = new string[2];
-        job = new int[2];
 
-        if (collision.CompareTag("Interactible") || collision.CompareTag("Level0Job") || collision.CompareTag("Level1Job") ||
-            collision.CompareTag("Level2Job") || collision.CompareTag("Level0House") || collision.CompareTag("Level1House") ||
-            collision.CompareTag("Level2House"))
+
+        if (collision.CompareTag("Interactible"))
         {
             currentInterObj = collision.gameObject;
 
@@ -60,189 +78,382 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (currentInterObj.name == "BreadStall")
                 {
+                    item = "bread";
+                    value = 15;
+                    selling = true;
 
-                    item[0] = "bread";
-                    item[1] = "15";
-                    //currentInterObj.SendMessage("DoSellInteraction", item);
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+
                 }
 
-                if (currentInterObj.name == "BeetStall")
+                else if(currentInterObj.name == "BeetStall")
                 {
-                    item[0] = "beets";
-                    item[1] = "5";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                    item = "beets";
+                    value = 5;
+                    selling = true;
                 }
 
-                if (currentInterObj.name == "AppleStall")
+                else if (currentInterObj.name == "AppleStall")
                 {
-                    item[0] = "apples";
-                    item[1] = "8";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                    item = "apples";
+                    value = 8;
+                    selling = true;
                 }
 
-                if (currentInterObj.name == "CarrotStall")
+                else if (currentInterObj.name == "CarrotStall")
                 {
-                    item[0] = "carrots";
-                    item[1] = "6";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                    item = "carrots";
+                    value = 6;
+                    selling = true;
+
                 }
 
-                if (currentInterObj.name == "BananaStall")
+                else if (currentInterObj.name == "BananaStall")
                 {
-                    item[0] = "bananas";
-                    item[1] = "7";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                    item = "bananas";
+                    value = 7;
+                    selling = true;
+
                 }
 
-                if (currentInterObj.name == "PeaStall")
+                else if (currentInterObj.name == "PeaStall")
                 {
-                    item[0] = "peass";
-                    item[1] = "2";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                    item = "peas";
+                    value = 2;
+                    selling = true;
+
                 }
 
-                if (currentInterObj.name == "PepperStall")
+                else if (currentInterObj.name == "PepperStall")
+                { 
+                    item = "peppers";
+                    value = 3;
+                    selling = true;
+
+                }
+
+                else if (currentInterObj.name == "BookStall")
                 {
-                    item[0] = "peppers";
-                    item[1] = "3";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                    item = "books";
+                    value = 100;
+                    selling = true;
+
                 }
 
-                if (currentInterObj.name == "BookStall")
+                else if (currentInterObj.name == "OrangeStall")
                 {
-                    item[0] = "books";
-                    item[1] = "100";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                    item = "oranges";
+                    value = 7;
+                    selling = true;
+
                 }
 
-                if (currentInterObj.name == "OrangeStall")
+                else if (currentInterObj.name == "CornStall")
                 {
-                    item[0] = "oranges";
-                    item[1] = "7";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                    item = "corn";
+                    value = 11;
+                    selling = true;
+
                 }
-
-                if (currentInterObj.name == "CornStall")
-                {
-                    item[0] = "corn";
-                    item[1] = "11";
-                    currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
-                }
-
-                if (currentInterObj.name == "JobBlacksmith")
-                {
-                    job[0] = 7;
-                    job[1] = 10;
-                    jobbing = true;
-                }
-
-
-
-            }
-            /*
-            else if (jobDone == false)
-            {
-
-                if (currentInterObj.CompareTag("Level0Job"))
-                {
-                    if (playerStatus == "pleb")
-                    {
-                        if (currentInterObj.name == "JobFarmRight" || currentInterObj.name == "JobFarmLeft")
-                        {
-
-                            job[0] = 6;
-                            job[1] = 10;
-                            currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
-                        }
-                    }
-                }
-                else if (currentInterObj.CompareTag("Level1Job"))
-                {
-                    if (playerStatus == "townfolk")
-                    {
-                        if (currentInterObj.name == "JobBlacksmith")
-                        {
-                            job[0] = 7;
-                            job[1] = 10;
-                            currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
-                        }
-
-                        if (currentInterObj.name == "JobTailor")
-                        {
-                            job[0] = 9;
-                            job[1] = 7;
-                            currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
-                        }
-                    }
-                }
-                else if (currentInterObj.CompareTag("Level2Job"))
-                {
-                    if (playerStatus == "fancylad")
-                    {
-                        if (currentInterObj.name == "JobMerchent")
-                        {
-                            
-                            job[0] = 10;
-                            job[1] = 9;
-                            currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
-                        }
-
-                        if (currentInterObj.name == "JobTrader")
-                        {
-                            job[0] = 11;
-                            job[1] = 8;
-                            currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
-                        }
-                    }
-                }
-            }
-
-            if (currentInterObj.CompareTag("Level0House"))
-            {
 
                 if (playerStatus == "pleb")
-                    
-                currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
-            }
-
-            if (currentInterObj.CompareTag("Level1House"))
-            {
-                if (playerStatus == "townfolk")
-                    currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
-            }
-
-            if (currentInterObj.CompareTag("Level0House"))
-            {
-                if (playerStatus == "fancylad")
-                    currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
-            }
-
-        }
-    }
-    */
-            void OnTriggerExit2D(Collider2D other)
-            {
-                if (other.CompareTag("Interactible") || other.CompareTag("Level0Job") || other.CompareTag("Level1Job") ||
-                    other.CompareTag("Level2Job") || other.CompareTag("Level0House") || other.CompareTag("Level1House") ||
-                    other.CompareTag("Level2House"))
                 {
-                    currentInterObj = other.gameObject;
-                    currentInterObj.SendMessage("LeaveInteraction");
-                    currentInterObj = null;
+                    if (currentInterObj.name == "JobFarmRight" || currentInterObj.name == "JobFarmLeft")
+                    {
+
+                        job[0] = 6;
+                        job[1] = 10;
+                        jobbing = true;
+                    }
+                    else if (currentInterObj.name == "House0")
+                    {
+                        sleeping = true;
+                    }
                 }
-                /*if (other.gameObject == currentInterObj.gameObject)
+                else if(playerStatus == "townfolk")
                 {
-                    currentInterObj.SendMessage("LeaveInteraction");
-                    currentInterObj = null;
+                    if (currentInterObj.name == "JobBlacksmith")
+                    {
+                        job[0] = 7;
+                        job[1] = 10;
+                        jobbing = true;
+                    }
+                    else if (currentInterObj.name == "JobTailor")
+                    {
+                        job[0] = 9;
+                        job[1] = 7;
+                        jobbing = true;
+                    }
+                    else if (currentInterObj.name == "House1")
+                    {
+                        sleeping = true;
+                    }
+                }
+                else if (playerStatus == "fancylad")
+                {
+                    if (currentInterObj.name == "JobMerchent")
+                    {
 
-                }*/
+                        job[0] = 10;
+                        job[1] = 9;
+                        jobbing = true;
+                    }
+
+                    if (currentInterObj.name == "JobTrader")
+                    {
+                        job[0] = 11;
+                        job[1] = 8;
+                        jobbing = true;
+                    }
+                    else if (currentInterObj.name == "House2")
+                    {
+                        sleeping = true;
+                    }
+                }
+
 
             }
-
         }
     }
 }
+
+
+        /*public GameObject dialogBox;
+        public TextMeshProUGUI dialogText;
+        public string[] dialog;
+        private int i;
+
+        GameObject currentInterObj = null;
+        public string playerStatus = "pleb";
+        public string currentJob = null;
+        public bool jobDone = false;
+        public string possibleStatus = "pleb";
+        bool jobbing;
+
+        string[] item;
+        int[] job;
+
+        private void Update()
+        {
+            if (GameObject.Find("Time").GetComponent<TimeTracker>().curfew == true)
+                jobDone = false;
+            if (currentInterObj != null && Input.GetButtonDown("Interact"))
+            {
+                if (currentInterObj.GetComponent<InteractionObject>().sell == true)
+                {
+                    currentInterObj.GetComponent<InteractionObject>().selling(item);
+                }
+                else if (jobbing == true)
+                {
+                    GameObject.Find("Character").GetComponent<Controller>().AddMoney(20);
+                } /*else if (currentInterObj.GetComponent<InteractionObject>().sleep == true)
+                {
+
+                    currentInterObj.GetComponent<InteractionObject>().sleeping();
+                }*/
+
+        /* }
+
+     }
+
+     void OnTriggerEnter2D(Collider2D collision)
+     {
+         //Debug.Log("Job Check, " + currentInterObj.tag + ", " + currentInterObj.name);
+         item = new string[2];
+         job = new int[2];
+
+         if (collision.CompareTag("Interactible") || collision.CompareTag("Level0Job") || collision.CompareTag("Level1Job") ||
+             collision.CompareTag("Level2Job") || collision.CompareTag("Level0House") || collision.CompareTag("Level1House") ||
+             collision.CompareTag("Level2House"))
+         {
+             currentInterObj = collision.gameObject;
+
+             if (currentInterObj.CompareTag("Interactible"))
+             {
+                 if (currentInterObj.name == "BreadStall")
+                 {
+
+                     item[0] = "bread";
+                     item[1] = "15";
+                     //currentInterObj.SendMessage("DoSellInteraction", item);
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "BeetStall")
+                 {
+                     item[0] = "beets";
+                     item[1] = "5";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "AppleStall")
+                 {
+                     item[0] = "apples";
+                     item[1] = "8";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "CarrotStall")
+                 {
+                     item[0] = "carrots";
+                     item[1] = "6";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "BananaStall")
+                 {
+                     item[0] = "bananas";
+                     item[1] = "7";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "PeaStall")
+                 {
+                     item[0] = "peass";
+                     item[1] = "2";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "PepperStall")
+                 {
+                     item[0] = "peppers";
+                     item[1] = "3";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "BookStall")
+                 {
+                     item[0] = "books";
+                     item[1] = "100";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "OrangeStall")
+                 {
+                     item[0] = "oranges";
+                     item[1] = "7";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "CornStall")
+                 {
+                     item[0] = "corn";
+                     item[1] = "11";
+                     currentInterObj.GetComponent<InteractionObject>().DoSellInteraction();
+                 }
+
+                 if (currentInterObj.name == "JobBlacksmith")
+                 {
+                     job[0] = 7;
+                     job[1] = 10;
+                     jobbing = true;
+                 }
+
+
+
+             }
+             /*
+             else if (jobDone == false)
+             {
+
+                 if (currentInterObj.CompareTag("Level0Job"))
+                 {
+                     if (playerStatus == "pleb")
+                     {
+                         if (currentInterObj.name == "JobFarmRight" || currentInterObj.name == "JobFarmLeft")
+                         {
+
+                             job[0] = 6;
+                             job[1] = 10;
+                             currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
+                         }
+                     }
+                 }
+                 else if (currentInterObj.CompareTag("Level1Job"))
+                 {
+                     if (playerStatus == "townfolk")
+                     {
+                         if (currentInterObj.name == "JobBlacksmith")
+                         {
+                             job[0] = 7;
+                             job[1] = 10;
+                             currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
+                         }
+
+                         if (currentInterObj.name == "JobTailor")
+                         {
+                             job[0] = 9;
+                             job[1] = 7;
+                             currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
+                         }
+                     }
+                 }
+                 else if (currentInterObj.CompareTag("Level2Job"))
+                 {
+                     if (playerStatus == "fancylad")
+                     {
+                         if (currentInterObj.name == "JobMerchent")
+                         {
+
+                             job[0] = 10;
+                             job[1] = 9;
+                             currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
+                         }
+
+                         if (currentInterObj.name == "JobTrader")
+                         {
+                             job[0] = 11;
+                             job[1] = 8;
+                             currentInterObj.GetComponent<InteractionObject>().DoJobInteraction();
+                         }
+                     }
+                 }
+             }
+
+             if (currentInterObj.CompareTag("Level0House"))
+             {
+
+                 if (playerStatus == "pleb")
+
+                 currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
+             }
+
+             if (currentInterObj.CompareTag("Level1House"))
+             {
+                 if (playerStatus == "townfolk")
+                     currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
+             }
+
+             if (currentInterObj.CompareTag("Level0House"))
+             {
+                 if (playerStatus == "fancylad")
+                     currentInterObj.GetComponent<InteractionObject>().DoSleepInteraction();
+             }
+
+         }
+     }
+     */
+        /* void OnTriggerExit2D(Collider2D other)
+         {
+             if (other.CompareTag("Interactible") || other.CompareTag("Level0Job") || other.CompareTag("Level1Job") ||
+                 other.CompareTag("Level2Job") || other.CompareTag("Level0House") || other.CompareTag("Level1House") ||
+                 other.CompareTag("Level2House"))
+             {
+                 currentInterObj = other.gameObject;
+                 currentInterObj.SendMessage("LeaveInteraction");
+                 currentInterObj = null;
+             }
+             /*if (other.gameObject == currentInterObj.gameObject)
+             {
+                 currentInterObj.SendMessage("LeaveInteraction");
+                 currentInterObj = null;
+
+             }*/
+
+        /* }
+
+     }
+    }*/
+
 /*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

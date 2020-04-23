@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Guard : MonoBehaviour
 {
-    private GameObject Player;
+    public GameObject Player;
     
     private Vector2 movement;
     public float speed;
@@ -54,7 +54,7 @@ public class Guard : MonoBehaviour
         randomSpot = 0;
         lastSpot = moveSpots.Length -1;
         animator.SetFloat("Speed", speed);
-        Player = GameObject.Find("Character");
+        
         curfew = false;
         checkPlayer = false;
         taxCollected = false;
