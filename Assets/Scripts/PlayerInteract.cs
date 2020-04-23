@@ -12,7 +12,6 @@ public class PlayerInteract : MonoBehaviour
     public string[] dialog;
     public GameObject currentInterObj;
     public string playerStatus;
-    string item;
     int value;
     public int[] job;
     public bool selling;
@@ -23,6 +22,7 @@ public class PlayerInteract : MonoBehaviour
     public GameObject clock;
     private TimeTracker time;
     int workedHours;
+    public GameObject prefab;
 
     private void Start()
     {
@@ -40,6 +40,8 @@ public class PlayerInteract : MonoBehaviour
             if (selling == true && controller.gold > value)
             {
                 controller.takeMoney(value);
+                prefab = currentInterObj.GetComponent<InteractionObject>().prefab;
+                Instantiate(prefab, transform.position, Quaternion.identity);
             }
             else if (jobbing == true && job[1] > workedHours )
             {
@@ -118,30 +120,24 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (currentInterObj.name == "BreadStall")
                 {
-                    item = "bread";
                     value = 15;
                     selling = true;
-
-
                 }
 
                 else if(currentInterObj.name == "BeetStall")
                 {
-                    item = "beets";
                     value = 5;
                     selling = true;
                 }
 
                 else if (currentInterObj.name == "AppleStall")
                 {
-                    item = "apples";
                     value = 8;
                     selling = true;
                 }
 
                 else if (currentInterObj.name == "CarrotStall")
                 {
-                    item = "carrots";
                     value = 6;
                     selling = true;
 
@@ -149,7 +145,6 @@ public class PlayerInteract : MonoBehaviour
 
                 else if (currentInterObj.name == "BananaStall")
                 {
-                    item = "bananas";
                     value = 7;
                     selling = true;
 
@@ -157,7 +152,6 @@ public class PlayerInteract : MonoBehaviour
 
                 else if (currentInterObj.name == "PeaStall")
                 {
-                    item = "peas";
                     value = 2;
                     selling = true;
 
@@ -165,7 +159,6 @@ public class PlayerInteract : MonoBehaviour
 
                 else if (currentInterObj.name == "PepperStall")
                 { 
-                    item = "peppers";
                     value = 3;
                     selling = true;
 
@@ -173,7 +166,6 @@ public class PlayerInteract : MonoBehaviour
 
                 else if (currentInterObj.name == "BookStall")
                 {
-                    item = "books";
                     value = 100;
                     selling = true;
 
@@ -181,7 +173,6 @@ public class PlayerInteract : MonoBehaviour
 
                 else if (currentInterObj.name == "OrangeStall")
                 {
-                    item = "oranges";
                     value = 7;
                     selling = true;
 
@@ -189,7 +180,6 @@ public class PlayerInteract : MonoBehaviour
 
                 else if (currentInterObj.name == "CornStall")
                 {
-                    item = "corn";
                     value = 11;
                     selling = true;
 

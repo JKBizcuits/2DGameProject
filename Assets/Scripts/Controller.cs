@@ -137,7 +137,7 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(2);
+            GetHungrier(2);
         }
 
         
@@ -181,6 +181,12 @@ public class Controller : MonoBehaviour
     public void GetHungrier(int amt)
     {
         currentFood -= amt;
+        foodBar.SetFood(currentFood);
+    }
+
+    public void AddHunger(int amt)
+    {
+        currentFood += amt;
         foodBar.SetFood(currentFood);
     }
 
