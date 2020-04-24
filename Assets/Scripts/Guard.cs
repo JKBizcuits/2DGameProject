@@ -18,12 +18,12 @@ public class Guard : MonoBehaviour
     private int criminalRating;
 
     public bool gracePeriod = false;
-    private bool taxCollected;
+    public bool taxCollected;
     private bool failedSteal;
     private bool taxChase;
     private bool criminalChase;
-    private bool curfew;
-    private GameObject taxCollector;
+    public bool curfew;
+    public GameObject taxCollector;
     public GameObject clock;
     private bool activePatrol;
     public Transform[] moveSpots;
@@ -42,6 +42,8 @@ public class Guard : MonoBehaviour
 
     public GameObject music;
     private MusicPlayer mp3;
+
+    public PlayerInteract playerInteract;
 
 
 
@@ -63,11 +65,12 @@ public class Guard : MonoBehaviour
         criminalChase = false;
         activePatrol = true;
         
-        taxCollector = GameObject.Find("Butch");
+        
         
         timeTracker = clock.AddComponent<TimeTracker>();
         taxCollectorScript = taxCollector.GetComponent<TaxCollector>();
         mp3 = music.GetComponent<MusicPlayer>();
+        playerInteract = Player.GetComponent<PlayerInteract>();
     }
 
     // Update is called once per frame
@@ -185,13 +188,13 @@ public class Guard : MonoBehaviour
         {
             checkPlayer = true;
 
-            if (taxCollector.GetComponent<TaxCollector>().lateDue > 0 && taxCollected == false && gracePeriod == false)
+            if (playerInteract.taxOverDue == true && taxCollected == false)
             {
                 activePatrol = false;
                 taxChase = true;
                 mp3.chased = true;
             }
-            else if (((criminalRating > 0 && (rnd.Next(1, 100) <= criminalRating)) || curfew == true || failedSteal == true) && taxChase == false)
+            else if (/*((criminalRating > 0 && (rnd.Next(1, 100) <= criminalRating)) ||*/ curfew == true /*|| failedSteal == true)*/ && taxChase == false)
             {
                 activePatrol = false;
                 criminalChase = true;
@@ -199,12 +202,12 @@ public class Guard : MonoBehaviour
             }
         }
 
-        if (timeTracker.hoursDisplay == "06")
+        /*if (timeTracker.hoursDisplay == "06")
         {
             taxCollected = false;
-        }
+        }*/
 
-        curfew = timeTracker.curfew;
+        
 
         absDeltaX = System.Math.Abs(deltaX);
         absDeltaY = System.Math.Abs(deltaY);
