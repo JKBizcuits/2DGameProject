@@ -29,6 +29,7 @@ public class Controller : MonoBehaviour
 
     public int currentHealth;
     public HealthBarScript healthBar;
+    public Canvas deathScreen;
 
     public int maxFood;
     public int currentFood;
@@ -59,6 +60,7 @@ public class Controller : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        deathScreen.enabled = false;
 
         currentFood = maxFood;
         foodBar.SetMaxFood(maxFood);
@@ -88,66 +90,71 @@ public class Controller : MonoBehaviour
 
         Vector2 inputMovement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-
-        if (Input.GetAxis("Horizontal") > 0 && Input.GetAxis("Vertical") == 0)
+        if (currentHealth <= 0)
         {
-            animator.SetFloat("IdleHorizontal", inputMovement.x);
-            animator.SetFloat("IdleVertical", inputMovement.y);
-            animator.SetFloat("Horizontal", inputMovement.x);
-            animator.SetFloat("Vertical", inputMovement.y);
-        }
-        else if (Input.GetAxis("Horizontal") < 0 && Input.GetAxis("Vertical") == 0)
-        {
-
-            animator.SetFloat("IdleHorizontal", inputMovement.x);
-            animator.SetFloat("IdleVertical", inputMovement.y);
-            animator.SetFloat("Horizontal", inputMovement.x);
-            animator.SetFloat("Vertical", inputMovement.y);
-        }
-        else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") > 0)
-        {
-            animator.SetFloat("IdleHorizontal", inputMovement.x);
-            animator.SetFloat("IdleVertical", inputMovement.y);
-            animator.SetFloat("Horizontal", inputMovement.x);
-            animator.SetFloat("Vertical", inputMovement.y);
-        }
-        else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") < 0)
-        {
-            animator.SetFloat("IdleHorizontal", inputMovement.x);
-            animator.SetFloat("IdleVertical", inputMovement.y);
-            animator.SetFloat("Horizontal", inputMovement.x);
-            animator.SetFloat("Vertical", inputMovement.y);
-        }
-        else if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
-        {
-            animator.SetFloat("Horizontal", inputMovement.x);
-            animator.SetFloat("Vertical", inputMovement.y);
+            deathScreen.enabled = true;
         }
 
-
-        /**
-         * Here, we take our normal move vector and add a vector speed to it. However; an issue with this is that if we were to move diagonally,
-         * like normal physics we would have a greater speed then we did moving side to side. Adding the normalized method fixes this and the
-         * speed is kept constant.
-         */
-
-        animator.SetFloat("Speed", inputMovement.sqrMagnitude);
-        
-        moveVelocity = inputMovement.normalized * speed;
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        else
         {
-            GetHungrier(2);
+
+            if (Input.GetAxis("Horizontal") > 0 && Input.GetAxis("Vertical") == 0)
+            {
+                animator.SetFloat("IdleHorizontal", inputMovement.x);
+                animator.SetFloat("IdleVertical", inputMovement.y);
+                animator.SetFloat("Horizontal", inputMovement.x);
+                animator.SetFloat("Vertical", inputMovement.y);
+            }
+            else if (Input.GetAxis("Horizontal") < 0 && Input.GetAxis("Vertical") == 0)
+            {
+
+                animator.SetFloat("IdleHorizontal", inputMovement.x);
+                animator.SetFloat("IdleVertical", inputMovement.y);
+                animator.SetFloat("Horizontal", inputMovement.x);
+                animator.SetFloat("Vertical", inputMovement.y);
+            }
+            else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") > 0)
+            {
+                animator.SetFloat("IdleHorizontal", inputMovement.x);
+                animator.SetFloat("IdleVertical", inputMovement.y);
+                animator.SetFloat("Horizontal", inputMovement.x);
+                animator.SetFloat("Vertical", inputMovement.y);
+            }
+            else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") < 0)
+            {
+                animator.SetFloat("IdleHorizontal", inputMovement.x);
+                animator.SetFloat("IdleVertical", inputMovement.y);
+                animator.SetFloat("Horizontal", inputMovement.x);
+                animator.SetFloat("Vertical", inputMovement.y);
+            }
+            else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+            {
+                animator.SetFloat("Horizontal", inputMovement.x);
+                animator.SetFloat("Vertical", inputMovement.y);
+            }
+
+
+            /**
+             * Here, we take our normal move vector and add a vector speed to it. However; an issue with this is that if we were to move diagonally,
+             * like normal physics we would have a greater speed then we did moving side to side. Adding the normalized method fixes this and the
+             * speed is kept constant.
+             */
+
+            animator.SetFloat("Speed", inputMovement.sqrMagnitude);
+
+            moveVelocity = inputMovement.normalized * speed;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TakeDamage(2);
+            }
+
+            if (previousHours != time.GetHours() && sleep == false)
+            {
+                GetHungrier(2);
+                previousHours = time.GetHours();
+            }
         }
-
-        
-
-        if(previousHours != time.GetHours() && sleep == false)
-        {
-            GetHungrier(2);
-            previousHours = time.GetHours();
-        }
-
 
     }//end Update
 
