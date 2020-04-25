@@ -42,6 +42,7 @@ public class PlayerInteract : MonoBehaviour
     public GameObject guard;
     public Guard guardScript;
     public bool curfew;
+    
 
     private void Start()
     {
@@ -55,6 +56,7 @@ public class PlayerInteract : MonoBehaviour
         rentValue = 50;
         potentialStatus = "townfolk";
         guardScript = guard.GetComponent<Guard>();
+        
     }
 
     void Update()
