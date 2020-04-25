@@ -14,18 +14,18 @@ public class Guard : MonoBehaviour
     System.Random rnd = new System.Random();
     
     //triggers
-    private bool checkPlayer;
+    public bool checkPlayer;
     private int criminalRating;
 
     public bool gracePeriod = false;
     public bool taxCollected;
     private bool failedSteal;
-    private bool taxChase;
+    public bool taxChase;
     private bool criminalChase;
     public bool curfew;
     public GameObject taxCollector;
     public GameObject clock;
-    private bool activePatrol;
+    public bool activePatrol;
     public Transform[] moveSpots;
     private int randomSpot;
     private int lastSpot;
@@ -161,8 +161,8 @@ public class Guard : MonoBehaviour
             */
 
         }
-    
 
+        playerInteract = Player.GetComponent<PlayerInteract>();
         criminalRating = Player.GetComponent<Controller>().criminalRating;
         if (taxChase == true || criminalChase == true)
         {
@@ -186,19 +186,21 @@ public class Guard : MonoBehaviour
         
         if (Vector2.Distance(transform.position, Player.transform.position) < distance && checkPlayer == false)
         {
-            checkPlayer = true;
-
+            
+            playerInteract = Player.GetComponent<PlayerInteract>();
             if (playerInteract.taxOverDue == true && taxCollected == false)
             {
                 activePatrol = false;
                 taxChase = true;
                 mp3.chased = true;
+                checkPlayer = true;
             }
             else if (/*((criminalRating > 0 && (rnd.Next(1, 100) <= criminalRating)) ||*/ curfew == true /*|| failedSteal == true)*/ && taxChase == false)
             {
                 activePatrol = false;
                 criminalChase = true;
                 mp3.chased = true;
+                checkPlayer = true;
             }
         }
 
@@ -257,18 +259,23 @@ public class Guard : MonoBehaviour
         
         if (Warrick.gameObject.name == "Character")
         {
-            Controller script = Warrick.GetComponent<Controller>();
+            Controller script = Player.GetComponent<Controller>();
             if (taxChase == true)
             {
                 taxChase = false;
+                if (script.gold >= 20)
+                {
+                    script.takeMoney(20);
+                    script.TakeDamage(-20);
 
-                script.takeMoney(fine(script));
+                }
+                else
+                {
+                    script.TakeDamage(-40);
+                }
 
-                script.TakeDamage(taxDamage());
+                
                 taxCollected = true;
-
-                script.TakeDamage(taxDamage());
-
 
 
             }
@@ -279,7 +286,7 @@ public class Guard : MonoBehaviour
 
                 if(curfew == true)
                 {
-                    script.TakeDamage(10);
+                    script.TakeDamage(-10);
                 }
                 else{
                     script.TakeDamage(crimeDamage(script));
