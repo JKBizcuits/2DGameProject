@@ -57,6 +57,9 @@ public class Controller : MonoBehaviour
     public Canvas winScreen;
     public ParticleSystem confetti;
 
+    public GameObject music;
+    private MusicPlayer mp3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +82,7 @@ public class Controller : MonoBehaviour
         firstFrame = false;
 
         winScreen.enabled = false;
+        mp3 = music.GetComponent<MusicPlayer>();
 
     }//end Start
 
@@ -102,6 +106,7 @@ public class Controller : MonoBehaviour
         if (currentHealth <= 0)
         {
             deathScreen.enabled = true;
+            mp3.dead = true;
         }
 
         else
