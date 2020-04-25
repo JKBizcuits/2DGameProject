@@ -43,7 +43,6 @@ public class PlayerInteract : MonoBehaviour
     public Guard guardScript;
     public bool curfew;
 
-
     private void Start()
     {
         controller = GetComponent<Controller>();
@@ -56,8 +55,6 @@ public class PlayerInteract : MonoBehaviour
         rentValue = 50;
         potentialStatus = "townfolk";
         guardScript = guard.GetComponent<Guard>();
-
-
     }
 
     void Update()
@@ -208,7 +205,7 @@ public class PlayerInteract : MonoBehaviour
             }
             else if(victory == true)
             {
-                //win
+                controller.Victory();
             }
         }
 
