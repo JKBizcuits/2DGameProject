@@ -50,6 +50,10 @@ public class Controller : MonoBehaviour
 
     public TextMeshProUGUI moneyCount;
 
+    public int deltaHealth;
+
+    public bool firstFrame;
+
 
 
     // Start is called before the first frame update
@@ -71,6 +75,7 @@ public class Controller : MonoBehaviour
         sleep = false;
         gold = 100;
         moneyCount.text = $"{gold}";
+        firstFrame = false;
 
     }//end Start
 
@@ -88,7 +93,8 @@ public class Controller : MonoBehaviour
          * and stops immediately after the key is let go.
          */
 
-        Vector2 inputMovement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 inputMovement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
 
         if (currentHealth <= 0)
         {
@@ -97,15 +103,19 @@ public class Controller : MonoBehaviour
 
         else
         {
+        
 
-            if (Input.GetAxis("Horizontal") > 0 && Input.GetAxis("Vertical") == 0)
+
+        
+
+            if (Input.GetAxisRaw("Horizontal") > 0 && Input.GetAxisRaw("Vertical") == 0)
             {
                 animator.SetFloat("IdleHorizontal", inputMovement.x);
                 animator.SetFloat("IdleVertical", inputMovement.y);
                 animator.SetFloat("Horizontal", inputMovement.x);
                 animator.SetFloat("Vertical", inputMovement.y);
             }
-            else if (Input.GetAxis("Horizontal") < 0 && Input.GetAxis("Vertical") == 0)
+            else if (Input.GetAxisRaw("Horizontal") < 0 && Input.GetAxisRaw("Vertical") == 0)
             {
 
                 animator.SetFloat("IdleHorizontal", inputMovement.x);
@@ -113,21 +123,21 @@ public class Controller : MonoBehaviour
                 animator.SetFloat("Horizontal", inputMovement.x);
                 animator.SetFloat("Vertical", inputMovement.y);
             }
-            else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") > 0)
+            else if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") > 0)
             {
                 animator.SetFloat("IdleHorizontal", inputMovement.x);
                 animator.SetFloat("IdleVertical", inputMovement.y);
                 animator.SetFloat("Horizontal", inputMovement.x);
                 animator.SetFloat("Vertical", inputMovement.y);
             }
-            else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") < 0)
+            else if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") < 0)
             {
                 animator.SetFloat("IdleHorizontal", inputMovement.x);
                 animator.SetFloat("IdleVertical", inputMovement.y);
                 animator.SetFloat("Horizontal", inputMovement.x);
                 animator.SetFloat("Vertical", inputMovement.y);
             }
-            else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+            else if(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
             {
                 animator.SetFloat("Horizontal", inputMovement.x);
                 animator.SetFloat("Vertical", inputMovement.y);
@@ -143,18 +153,54 @@ public class Controller : MonoBehaviour
             animator.SetFloat("Speed", inputMovement.sqrMagnitude);
 
             moveVelocity = inputMovement.normalized * speed;
+      }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 TakeDamage(2);
             }
 
-            if (previousHours != time.GetHours() && sleep == false)
-            {
-                GetHungrier(2);
-                previousHours = time.GetHours();
-            }
+
+        
+
+        if(previousHours != time.GetHours() && sleep == false && firstFrame == true)
+        {
+            
+            GetHungrier(2);
+            previousHours = time.GetHours();
+            healthRegen(currentFood);
+            TakeDamage(deltaHealth);
+
         }
+
+
+        if(currentFood < 0)
+        {
+            foodBar.SetFood(0);
+            currentFood = 0;
+        }
+        else if(currentFood > 100)
+        {
+            foodBar.SetFood(100);
+            currentFood = 100;
+        }
+
+        if (currentHealth < 0)
+        {
+            healthBar.SetHealth(0);
+            currentHealth = 0;
+        }
+        else if(currentHealth > 100)
+        {
+            healthBar.SetHealth(100);
+            currentHealth = 100;
+        }
+
+        firstFrame = true;
+
+
+
+
 
     }//end Update
 
@@ -178,7 +224,7 @@ public class Controller : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        currentHealth += damage;
 
         healthBar.SetHealth(currentHealth);
 
@@ -207,6 +253,50 @@ public class Controller : MonoBehaviour
     {
         gold -= amt;
         moneyCount.text = $"{gold}";
+        
+    }
+
+    public void healthRegen(int food)
+    {
+        
+        if (currentFood >80)
+        {
+            deltaHealth = 4;
+            
+        }
+        else if (currentFood > 60 && currentFood < 81)
+        {
+            deltaHealth = 3;
+        }
+        else if (currentFood > 40 && currentFood < 61)
+        {
+            deltaHealth = 2;
+        }
+        else if (currentFood > 20 && currentFood < 41)
+        {
+            deltaHealth = 1;
+        }
+        else if (currentFood == 20)
+        {
+            deltaHealth = 0;
+        }
+        else if (currentFood > 15 && currentFood < 21)
+        {
+            deltaHealth = -6;
+        }
+        else if (currentFood > 10 && currentFood < 16)
+        {
+            deltaHealth = -12;
+        }
+        else if (currentFood > 5 && currentFood < 11)
+        {
+            deltaHealth = -18;
+        }
+        else if (currentFood < 6)
+        {
+            deltaHealth = -24;
+        }
+
         
     }
 
