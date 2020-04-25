@@ -8,6 +8,12 @@ TagManager:
   - Market Item
   - Guard
   - Civilian
+  - Level1Job
+  - Level1House
+  - Level2Job
+  - Level0Job
+  - Level2House
+  - Level0House
   layers:
   - Default
   - TransparentFX
@@ -95,4 +101,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3147697963
+    locked: 0
+  - name: Fade
+    uniqueID: 1206172905
     locked: 0
