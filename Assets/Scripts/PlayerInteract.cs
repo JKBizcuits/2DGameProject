@@ -248,6 +248,7 @@ public class PlayerInteract : MonoBehaviour
             workedHours = 0;
             
             guardScript.taxCollected = false;
+            guardScript.checkPlayer = false; 
 
         }
 
@@ -375,14 +376,7 @@ public class PlayerInteract : MonoBehaviour
 
                 }
 
-                else if (currentInterObj.name == "BookStall")
-                {
-                    value = 100;
-                    selling = true;
-                    dialogText.text = "Want to buy a book?\n Press X\n to buy for " + value + " gold";
-                    dialogBox.SetActive(true);
 
-                }
 
                 else if (currentInterObj.name == "OrangeStall")
                 {

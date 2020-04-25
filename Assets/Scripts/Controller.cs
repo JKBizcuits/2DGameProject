@@ -179,30 +179,30 @@ public class Controller : MonoBehaviour
 
         if(currentFood < 0)
         {
-            foodBar.SetFood(0);
+            
             currentFood = 0;
         }
         else if(currentFood > 100)
         {
-            foodBar.SetFood(100);
+            
             currentFood = 100;
         }
 
         if (currentHealth < 0)
         {
-            healthBar.SetHealth(0);
+            
             currentHealth = 0;
         }
-        else if(currentHealth > 100)
+        else if(currentHealth >= 101)
         {
-            healthBar.SetHealth(100);
+            
             currentHealth = 100;
         }
 
         firstFrame = true;
-
-
-
+        foodBar.SetFood(currentFood);
+        healthBar.SetHealth(currentHealth);
+        moneyCount.text = $"{gold}";
 
 
     }//end Update
