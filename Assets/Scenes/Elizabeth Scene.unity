@@ -2560,6 +2560,9 @@ MonoBehaviour:
   outOfRange: 20
   damageModified: 0
   gracePeriod: 0
+  taxCollected: 0
+  curfew: 0
+  taxCollector: {fileID: 0}
   clock: {fileID: 1088567870}
   moveSpots:
   - {fileID: 1418408021}
@@ -2569,6 +2572,7 @@ MonoBehaviour:
   startWaitTime: 1
   taxCollectorScript: {fileID: 0}
   music: {fileID: 877999446}
+  playerInteract: {fileID: 0}
 --- !u!70 &252636031
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2920,6 +2924,11 @@ MonoBehaviour:
   previousHours: 06
   sleep: 0
   moneyCount: {fileID: 920726853}
+  deltaHealth: 0
+  firstFrame: 0
+  winScreen: {fileID: 535072852}
+  confetti: {fileID: 4261059708936372100, guid: b43a65a600e191740826d0df152a9071,
+    type: 3}
 --- !u!212 &260096379
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3018,8 +3027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBox: {fileID: 1868577993}
   dialogText: {fileID: 1008515572}
-  dialog:
-  - This worked
+  dialog: 
   currentInterObj: {fileID: 0}
   playerStatus: pleb
   job: 
@@ -3030,6 +3038,23 @@ MonoBehaviour:
   sleepMode: 0
   clock: {fileID: 0}
   prefab: {fileID: 0}
+  taxing: 0
+  taxValue: 0
+  late: 0
+  taxOverDue: 0
+  taxExchange: 0
+  renewTax: 0
+  renting: 0
+  rentValue: 0
+  rentExchange: 0
+  renewRent: 0
+  housing: 0
+  houseCost: 0
+  potentialStatus: 
+  victory: 0
+  guard: {fileID: 0}
+  guardScript: {fileID: 0}
+  curfew: 0
 --- !u!114 &260096383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53109,7 +53134,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535072848}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -54944,7 +54969,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798287692}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
@@ -54953,7 +54978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -7.3, y: 36.200012}
+  m_AnchoredPosition: {x: -7.300049, y: 36.19998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798287694
@@ -77637,7 +77662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2017094893
 MonoBehaviour:
   m_ObjectHideFlags: 0

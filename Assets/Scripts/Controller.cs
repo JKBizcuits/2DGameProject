@@ -54,7 +54,8 @@ public class Controller : MonoBehaviour
 
     public bool firstFrame;
 
-
+    public Canvas winScreen;
+    public ParticleSystem confetti;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +77,8 @@ public class Controller : MonoBehaviour
         gold = 100;
         moneyCount.text = $"{gold}";
         firstFrame = false;
+
+        winScreen.enabled = false;
 
     }//end Start
 
@@ -297,7 +300,13 @@ public class Controller : MonoBehaviour
             deltaHealth = -24;
         }
 
-        
+    }
+
+    public void Victory()
+    {
+        winScreen.enabled = true;
+        Vector2 confettiPosition = new Vector2(transform.position.x, transform.position.y + 4); 
+        Instantiate(confetti, confettiPosition, Quaternion.identity);
     }
 
 }
